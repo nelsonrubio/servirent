@@ -3,12 +3,10 @@ include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$bodega = mysqli_query($con, "select * from bodegas") or
-die("Problemas en el select:" . mysqli_error($con));
+ 
 $usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 3") or
 die("Problemas en el select:" . mysqli_error($con));
-$cilindros = mysqli_query($con, "select * from cilindros") or
-die("Problemas en el select:" . mysqli_error($con));
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +15,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Crear cilindro</title>
+  <title>Crear nota</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -66,12 +64,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cilindros</h1>
+            <h1>Nota de pedido</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear Cilindro</li>
+              <li class="breadcrumb-item active">Crear nota</li>
             </ol>
           </div>
         </div>
@@ -86,34 +84,68 @@ die("Problemas en el select:" . mysqli_error($con));
           <!-- /.card-header -->
           <div class="card-body">
           <form role="form" method="POST" id="registroCupones">
-            <label for="">Datos del cilindro</label>
+            <label for="">Datos de la nota</label>
             <div class="row">
-              <div class="col-md-12">
-                <label for="">Descripcion del cilindro</label>
+              <div class="col-md-6">
+                <label for="">Nombre</label>
                 <div class="form-group">
-                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Descripcion de cilindro">
+                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Nombre">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Razon social</label>
+                <div class="form-group">
+                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Razon social">
                 </div>
               </div>
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="">Kilo del cilindro</label>
+                <label for="">Direccion</label>
                 <div class="form-group">
-                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Kilo de cilindro">
+                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Direccion">
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Precio del cilindro</label>
+                <label for="">Telefono</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Precio">
+                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Telefono">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">Nombre de la obra</label>
+                <div class="form-group">
+                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Nombre de obra">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Responsable de la obra</label>
+                <div class="form-group">
+                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Responsable">
                 </div>
               </div>
             </div>
 
             <div class="row">
+              <div class="col-md-6">
+                <label for="">Fecha inicio</label>
+                <div class="form-group">
+                  <input type="text" name="fecha" class="form-control usuario" id="datepicker" placeholder="Fecha inicio">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Fecha fin</label>
+                <div class="form-group">
+                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Fecha final">
+                </div>
+              </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <button type="submit " class="btn btn-primary btn-block ">Crear  Cilindro</button>
+                    <button type="submit " class="btn btn-primary btn-block ">Crear  nota</button>
                 </div>
             </div>
           </form>
@@ -147,6 +179,7 @@ die("Problemas en el select:" . mysqli_error($con));
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
 <script src="plugins/cilindros/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>

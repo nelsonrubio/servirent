@@ -40,9 +40,22 @@
                 </a>
               </li>
 
+              <li class="nav-header">NOTA PEDIDO</li>
+              <li class="nav-item">
+                <a href="crearCotizacion.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear nota</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoCilindros.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de nota</p>
+                </a>
+              </li>
               <li class="nav-header">COTIZACION</li>
               <li class="nav-item">
-                <a href="crearCilindros.php" class="nav-link">
+                <a href="crearCotizacion.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Crear cotizacion</p>
                 </a>
