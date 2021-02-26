@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2021 a las 21:12:44
+-- Tiempo de generación: 26-02-2021 a las 19:43:25
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `servirent`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `articulos`
+--
+
+CREATE TABLE `articulos` (
+  `idArticulo` int(11) NOT NULL,
+  `nombreHerramienta` varchar(500) NOT NULL,
+  `marca` varchar(500) NOT NULL,
+  `modelo` varchar(500) NOT NULL,
+  `nroSerie` int(11) NOT NULL,
+  `PrecioDia` decimal(10,0) NOT NULL,
+  `PrecioHora` decimal(10,0) NOT NULL,
+  `PrecioSemana` decimal(10,0) NOT NULL,
+  `PrecioMes` decimal(10,0) NOT NULL,
+  `fechaCompra` date NOT NULL,
+  `NroFactura` int(11) NOT NULL,
+  `Proveedor` varchar(500) NOT NULL,
+  `CodigoEquipo` varchar(500) NOT NULL,
+  `nota` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -68,6 +91,12 @@ INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `clave`, `tipoUsuario`, `e
 --
 
 --
+-- Indices de la tabla `articulos`
+--
+ALTER TABLE `articulos`
+  ADD PRIMARY KEY (`idArticulo`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -82,6 +111,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `articulos`
+--
+ALTER TABLE `articulos`
+  MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
