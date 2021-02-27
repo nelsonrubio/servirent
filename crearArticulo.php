@@ -15,11 +15,12 @@ die("Problemas en el select:" . mysqli_error($con));
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Crear nota</title>
+  <title>Crear articulo</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" />
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Theme style -->
@@ -64,12 +65,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nota de pedido</h1>
+            <h1>Crear articulo</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear nota</li>
+              <li class="breadcrumb-item active">Crear articulo</li>
             </ol>
           </div>
         </div>
@@ -83,69 +84,109 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="registroCupones">
-            <label for="">Datos de la nota</label>
+          <form role="form" method="POST" id="registro">
+            <label for="">Datos del articulo</label>
             <div class="row">
               <div class="col-md-6">
-                <label for="">Nombre</label>
+                <label for="">Nombre del articulo</label>
                 <div class="form-group">
-                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Nombre">
+                    <input type="text" name="nombre" class="form-control nombre" id="nombre" placeholder="Nombre del articulo">
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Razon social</label>
+                <label for="">Marca de la herramienta</label>
                 <div class="form-group">
-                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Razon social">
+                    <input type="text" name="marca" class="form-control marca" id="marca" placeholder="MArca de la herramienta">
                 </div>
               </div>
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="">Direccion</label>
+                <label for="">Modelo de la herramienta</label>
                 <div class="form-group">
-                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Direccion">
+                  <input type="text" name="modelo" class="form-control modelo" id="modelo" placeholder="Modelo de la herramienta">
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Telefono</label>
+                <label for="">Numero de serie</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Telefono">
+                   <input type="number" name="serie" class="form-control serie" id="serie" placeholder="Numero de serie">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="">Nombre de la obra</label>
+                <label for="">Precio por dia</label>
                 <div class="form-group">
-                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Nombre de obra">
+                  <input type="text" name="precioDia" class="form-control precioDia" id="precioDia" placeholder="Precio por dia">
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Responsable de la obra</label>
+                <label for="">Precio por hora</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Responsable">
+                   <input type="number" name="precioHora" class="form-control precioHora" id="precioHora" placeholder="Precio por hora">
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6">
-                <label for="">Fecha inicio</label>
+                <label for="">Precio por semana</label>
                 <div class="form-group">
-                  <input type="text" name="fecha" class="form-control usuario" id="datepicker" placeholder="Fecha inicio">
+                  <input type="text" name="precioSemana" class="form-control precioSemana" id="precioSemana" placeholder="Precio por semana">
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="">Fecha fin</label>
+                <label for="">Precio por mes</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Fecha final">
+                   <input type="number" name="precioMes" class="form-control precioMes" id="precioMes" placeholder="Precio por mes">
                 </div>
               </div>
             </div>
             <div class="row">
+              <div class="col-md-6">
+                <label for="">Fecha de compra</label>
+                <div class="form-group">
+                  <input type="text" name="fechaCompra" class="form-control fechaCompra" id="fechaCompra" placeholder="Fecha de compra">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Numero de factura</label>
+                <div class="form-group">
+                   <input type="number" name="nroFactura" class="form-control nroFactura" id="nroFactura" placeholder="Numero de factura">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">Proveedor</label>
+                <div class="form-group">
+                  <input type="text" name="proveedor" class="form-control proveedor" id="proveedor" placeholder="Proveedor">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="">Codigo del equipo</label>
+                <div class="form-group">
+                   <input type="number" name="codigoEquipo" class="form-control codigoEquipo" id="codigoEquipo" placeholder="Codigo del equipo">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="">Nota</label>
+                <div class="form-group">
+                <textarea class="form-control nota" name="nota" id="nota" ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-12">
-                    <button type="submit " class="btn btn-primary btn-block ">Crear  nota</button>
+                    <button type="submit " class="btn btn-primary btn-block ">Crear  articulo</button>
                 </div>
             </div>
           </form>
@@ -180,7 +221,7 @@ die("Problemas en el select:" . mysqli_error($con));
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
-<script src="plugins/cilindros/index.js"></script>
+<script src="plugins/crearArticulo/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

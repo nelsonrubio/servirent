@@ -3,7 +3,7 @@ include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$registros = mysqli_query($con, "select * from bodegas") or
+$registros = mysqli_query($con, "select * from articulos") or
 die("Problemas en el select:" . mysqli_error($con));
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ die("Problemas en el select:" . mysqli_error($con));
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Listado de bodega</title>
+  <title>Listado de articulos</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -64,12 +64,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lista de bodega</h1>
+            <h1>Lista de articulos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Lista de bodegas</li>
+              <li class="breadcrumb-item active">Lista de articulos</li>
             </ol>
           </div>
         </div>
@@ -90,11 +90,14 @@ die("Problemas en el select:" . mysqli_error($con));
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Nombre de nodega</th>
-                    <th>Tipo de bodega</th>
-                    <th>inventario</th>
-                    <th>Fecha de creacion</th>
-                    <th>Usuario</th>
+                    <th>Nombre del articulo</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Fecha de compra</th>
+                    <th>Precio por dia</th>
+                    <th>Precio por hora</th>
+                    <th>Precio por semana</th>
+                    <th>Precio por mes</th>
                     <th>Opciones</th>
                   </tr>
                   </thead>
@@ -102,31 +105,23 @@ die("Problemas en el select:" . mysqli_error($con));
  
                     <?php
                         while ($reg = mysqli_fetch_array($registros)) {
-                          $id = $reg['idBodegas'];
                             echo'<tr>';
-                                echo '<td>' . $reg['nombreBodega'] . '</td>';
-                                if($reg['tipoBodega'] == 1){
-                                  echo '<td>Principal</td>';
-                                }else{
-                                  echo '<td>Secundaria</td>';
-                                }
-                                ?>
-                                 <td><a href="detalleBodega.php?id=<?php echo $id;?>"> <?php echo $reg['inventario']?></a></td> 
-                                <?php
+                                echo '<td>' . $reg['nombreHerramienta'] . '</td>';
+                                echo '<td>' . $reg['marca'] . '</td>';
+                                echo '<td>' . $reg['modelo'] . '</td>';
+                                echo '<td>' . $reg['fechaCompra'] . '</td>';
+                                echo '<td>' . $reg['PrecioDia'] . '</td>';
+                                echo '<td>' . $reg['PrecioHora'] . '</td>';
+                                echo '<td>' . $reg['PrecioSemana'] . '</td>';
+                                echo '<td>' . $reg['PrecioMes'] . '</td>';
                                 
-                                echo '<td>'.$reg['fechaCreacion'].'</td>';
-                                echo'<td>'.$reg['usuario'].'</td>';   
+                                 
         
                     ?>
                     <td> 
                         <a href="editarBodegas.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class='far fa-edit' title='Guardar'></i></a>
-                        <?php
-                          if($reg['tipoBodega'] == 1){
-                        ?>
-                        <a href="agregarInventario.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Agregar inventario"><i class='far fa-plus-square' title='Agregar inventario'></i></a>
-                        <?php
-                          }
-                        ?>
+                       
+                      
                     </td>
                     
                         </tr>
