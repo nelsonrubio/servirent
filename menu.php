@@ -12,7 +12,8 @@
           <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="width: 5.1rem  !important; border-radius: 14% !important;">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $user ?></a>
+          <a href="perfil.php" class="d-block"><?php echo $user ?></a>
+          
         </div>
       </div>
 
