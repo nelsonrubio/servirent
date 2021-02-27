@@ -105,6 +105,7 @@ die("Problemas en el select:" . mysqli_error($con));
  
                     <?php
                         while ($reg = mysqli_fetch_array($registros)) {
+                          $id = $reg['idArticulo'];
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreHerramienta'] . '</td>';
                                 echo '<td>' . $reg['marca'] . '</td>';
@@ -119,7 +120,7 @@ die("Problemas en el select:" . mysqli_error($con));
         
                     ?>
                     <td> 
-                        <a href="editarBodegas.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class='far fa-edit' title='Guardar'></i></a>
+                        <a href="editarArticulo.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class='far fa-edit' title='Guardar'></i></a>
                        
                       
                     </td>
