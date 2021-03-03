@@ -84,7 +84,7 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="registro">
+          <form role="form" method="POST" action="procesarArticulo.php" enctype="multipart/form-data">
             <label for="">Datos del articulo</label>
             <div class="row">
               <div class="col-md-6">
@@ -96,7 +96,7 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Marca de la herramienta</label>
                 <div class="form-group">
-                    <input type="text" name="marca" class="form-control marca" id="marca" placeholder="MArca de la herramienta">
+                    <input type="text" name="marca" class="form-control marca" id="marca" placeholder="Marca de la herramienta">
                 </div>
               </div>
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
@@ -104,6 +104,7 @@ die("Problemas en el select:" . mysqli_error($con));
             <div class="row">
               <div class="col-md-6">
                 <label for="">Modelo de la herramienta</label>
+                <!--yerimar fereira-->
                 <div class="form-group">
                   <input type="text" name="modelo" class="form-control modelo" id="modelo" placeholder="Modelo de la herramienta">
                 </div>
@@ -177,12 +178,22 @@ die("Problemas en el select:" . mysqli_error($con));
 
             <div class="row">
               <div class="col-md-12">
+                <label for="">Subir imgen</label>
+                  <div class="form-group">
+                    <input type="file" class="form-control-file" name="imagen" id="exampleFormControlFile1">
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
                 <label for="">Nota</label>
                 <div class="form-group">
                 <textarea class="form-control nota" name="nota" id="nota" ></textarea>
                 </div>
               </div>
             </div>
+
 
             <div class="row">
                 <div class="col-md-12">
