@@ -90,6 +90,7 @@ die("Problemas en el select:" . mysqli_error($con));
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>Imagen</th>
                     <th>Nombre del articulo</th>
                     <th>Marca</th>
                     <th>Modelo</th>
@@ -106,7 +107,11 @@ die("Problemas en el select:" . mysqli_error($con));
                     <?php
                         while ($reg = mysqli_fetch_array($registros)) {
                           $id = $reg['idArticulo'];
-                            echo'<tr>';
+                          $rutaImagen = $reg['directorioImagen'];
+                                echo'<tr>';
+                    ?>
+                                <td><img src="<?php echo $rutaImagen; ?>" border="1" alt="Este es el ejemplo de un texto alternativo" width="50" height="50"></td>
+                    <?php
                                 echo '<td>' . $reg['nombreHerramienta'] . '</td>';
                                 echo '<td>' . $reg['marca'] . '</td>';
                                 echo '<td>' . $reg['modelo'] . '</td>';
