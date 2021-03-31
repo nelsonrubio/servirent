@@ -6,6 +6,12 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
  
 $usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 3") or
 die("Problemas en el select:" . mysqli_error($con));
+
+$articulo = mysqli_query($con, "select * from articulos") or
+die("Problemas en el select:" . mysqli_error($con));
+
+$articulo2 = mysqli_query($con, "select * from articulos") or
+die("Problemas en el select:" . mysqli_error($con));
  
 ?>
 <!DOCTYPE html>
@@ -143,12 +149,103 @@ die("Problemas en el select:" . mysqli_error($con));
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group fieldGroup">
+                  <label for="">Articulo</label>
+                  <div class="input-group">
+                    <select class="form-control cilindro" name="articulo[]" style="width: 100%;">
+                      <?php
+                      while ($reg2 = mysqli_fetch_array($articulo2)) {
+                        echo '<option value='.$reg2['idArticulo'].'>' . $reg2['marca'] . " - " . $reg2['modelo'] . '</option>';
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group fieldGroup">
+                  <label for="">Precio alquiler</label>
+                  <div class="input-group">
+                    <select class="form-control cilindro" name="alquiler[]" style="width: 100%;">
+                        <option value='dia'>Por dia</option>
+                        <option value='hora'>Por hora</option>
+                        <option value='semana'>Por semana</option>
+                        <option value='mes'>Por mes</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group fieldGroup">
+                  <label for="">Cantidad</label>
+                  <div class="input-group">
+                    <input type="text" name="cantidad[]" class="form-control" placeholder="Cantidad" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group fieldGroup">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <a href="javascript:void(0)" class="btn btn-success addMore"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar herramienta</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit " class="btn btn-primary btn-block ">Crear  nota</button>
                 </div>
             </div>
           </form>
+
+
+
+          <div class="form-group fieldGroupCopy" style="display: none;">
+                    <div class="input-group">
+                      
+                      <div class="col-md-3">
+                          <select class="form-control cilindro" name="articulo[]" style="width: 100%;">
+                          <?php
+                          while ($reg2 = mysqli_fetch_array($articulo)) {
+                            echo '<option value='.$reg2['idArticulo'].'>' . $reg2['marca'] . " - " . $reg2['modelo'] . '</option>';
+                          }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                      <select class="form-control cilindro" name="alquiler[]" style="width: 100%;">
+                        <option value='dia'>Por dia</option>
+                        <option value='hora'>Por hora</option>
+                        <option value='semana'>Por semana</option>
+                        <option value='mes'>Por mes</option>
+                    </select>
+                      </div>
+                      <div class="col-md-3">
+                        <input type="text" name="cantidad[]" class="form-control" placeholder="Cantidad" />
+                      </div>
+                    
+                      
+                      <div class="col-md-3">
+                        <div class="input-group-addon">
+                              <a href="javascript:void(0)" class="btn btn-danger remove"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
+                          </div>
+                      </div>
+                        
+                    </div>
+                </div>
+              </div>
+
+
           </div>
         </div>
       </div>
@@ -173,11 +270,32 @@ die("Problemas en el select:" . mysqli_error($con));
   </footer>
 </div>
 <!-- ./wrapper -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script>
 
+$(document).ready(function() {
+var maxGroup = 30;
+
+//add more fields group
+$(".addMore").click(function() {
+    if ($('body').find('.fieldGroup').length < maxGroup) {
+        var fieldHTML = '<div class="form-group fieldGroup row">' + $(".fieldGroupCopy").html() + '</div>';
+        $('body').find('.fieldGroup:last').after(fieldHTML);
+    } else {
+        alert('Maximum ' + maxGroup + ' groups are allowed.');
+    }
+});
+
+//remove fields group
+$("body").on("click", ".remove", function() {
+    $(this).parents(".fieldGroup").remove();
+});
+});
+</script>
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
 <script src="plugins/cilindros/index.js"></script>
