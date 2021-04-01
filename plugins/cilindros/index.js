@@ -3,6 +3,9 @@ $(function() {
     $("#datepicker").datepicker({
         format: 'yyyy-mm-dd'
     });
+    $("#fechaFin").datepicker({
+        format: 'yyyy-mm-dd'
+    });
     $('#registroCupones').validate({
         rules: {
             usuario: {

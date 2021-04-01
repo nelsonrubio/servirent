@@ -26,6 +26,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" />
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Theme style -->
@@ -89,19 +90,19 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="registroCupones">
+          <form role="form" method="POST" action="procesarCotizacion.php">
             <label for="">Datos de la nota</label>
             <div class="row">
               <div class="col-md-6">
                 <label for="">Nombre</label>
                 <div class="form-group">
-                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Nombre">
+                    <input type="text" name="nombre" class="form-control descripcion" id="descripcion" placeholder="Nombre">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="">Razon social</label>
                 <div class="form-group">
-                    <input type="text" name="descripcion" class="form-control descripcion" id="descripcion" placeholder="Razon social">
+                    <input type="text" name="rut" class="form-control descripcion" id="descripcion" placeholder="Razon social">
                 </div>
               </div>
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
@@ -110,13 +111,13 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Direccion</label>
                 <div class="form-group">
-                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Direccion">
+                  <input type="text" name="direccion" class="form-control usuario" id="descripcion" placeholder="Direccion">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="">Telefono</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Telefono">
+                   <input type="number" name="telefono" class="form-control rut" id="porcentaje" placeholder="Telefono">
                 </div>
               </div>
             </div>
@@ -124,13 +125,13 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Nombre de la obra</label>
                 <div class="form-group">
-                  <input type="text" name="usuario" class="form-control usuario" id="descripcion" placeholder="Nombre de obra">
+                  <input type="text" name="obra" class="form-control usuario" id="descripcion" placeholder="Nombre de obra">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="">Responsable de la obra</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Responsable">
+                   <input type="text" name="responsable" class="form-control rut" id="porcentaje" placeholder="Responsable">
                 </div>
               </div>
             </div>
@@ -139,13 +140,13 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Fecha inicio</label>
                 <div class="form-group">
-                  <input type="text" name="fecha" class="form-control usuario" id="datepicker" placeholder="Fecha inicio">
+                  <input type="text" name="fechaInicio" class="form-control usuario" id="datepicker" placeholder="Fecha inicio">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="">Fecha fin</label>
                 <div class="form-group">
-                   <input type="number" name="rut" class="form-control rut" id="porcentaje" placeholder="Fecha final">
+                   <input type="text" name="fechaFin" class="form-control rut" id="fechaFin" placeholder="Fecha final">
                 </div>
               </div>
             </div>
