@@ -68,19 +68,7 @@
                   <p>Listado de nota</p>
                 </a>
               </li>
-              <li class="nav-header">COTIZACION</li>
-              <li class="nav-item">
-                <a href="crearCotizacion.php" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                  <p>Crear cotizacion</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listadoCilindros.php" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                  <p>Listado de cotizaciones</p>
-                </a>
-              </li>
+            
               <?php
               }
               ?>
