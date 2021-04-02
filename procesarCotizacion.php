@@ -16,10 +16,10 @@ include('conexion/conexion.php');
 
     // se inserta la cabecera de la nota de pedido
 
-    echo "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')";
+    //echo "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')";
 
-    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) 
-    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')") or 
+    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota) 
+    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable',1)") or 
     die("Problemas en el select" . mysqli_error($con));
     $idnota = mysqli_insert_id($con);
 
@@ -30,14 +30,14 @@ include('conexion/conexion.php');
                 $articulo = $articuloArr[$i];
                 $alquiler = $alquilerArr[$i];
                 $cantidad = $cantidadArr[$i];
-                echo "insert into detallenota(idcabeceranota,modeloarticulo,alquiler,cantidad,statusherramienta)  values ('$idnota','$articulo','$alquiler',$cantidad,1)";
+
+               // echo "insert into detallenota(idcabeceranota,modeloarticulo,alquiler,cantidad,statusherramienta)  values ('$idnota','$articulo','$alquiler',$cantidad,1)";
+                
                 mysqli_query($con, "insert into detallenota(idcabeceranota,modeloarticulo,alquiler,cantidad,statusherramienta) 
                 values ('$idnota','$articulo','$alquiler','$cantidad',1)") or 
                 die("Problemas en el select" . mysqli_error($con));
 
-                echo $articulo;
-                echo $alquiler;
-                echo $cantidad;
+                echo '<script> alert("Registro completado, por favor acepte para continuar..."); window.location = "crearCotizacion.php";</script>';
                 
                 // Database insert query goes here
             }
