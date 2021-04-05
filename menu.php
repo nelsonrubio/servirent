@@ -43,7 +43,7 @@
 
               <li class="nav-header">ARTICULO</li>
               <li class="nav-item">
-                <a href="crearArticulo.php" class="nav-link">
+                <a href="cargarArticulos.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Crear articulo</p>
                 </a>
