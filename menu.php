@@ -9,7 +9,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="width: 5.1rem  !important; border-radius: 14% !important;">
+         <!-- <img src="dist/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="width: 5.1rem  !important; border-radius: 14% !important;">-->
         </div>
         <div class="info">
           <a href="perfil.php" class="d-block"><?php echo $user ?></a>
