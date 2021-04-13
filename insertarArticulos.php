@@ -13,7 +13,7 @@ $d10 = $_POST['d10'];
 $d11 = $_POST['d11'];
 $d12 = $_POST['d12'];
 $d13 = $_POST['d13'];
-
+//cambios a insertar
 //echo "insert into articulos(nombreHerramienta,marca,modelo,nroSerie,PrecioDia,PrecioHora,PrecioSemana,PrecioMes,fechaCompra,NroFactura,Proveedor,CodigoEquipo,nota) values ('$d1','$d2', '$d3',$d4,$d5,$d6,$d7,$d8,'$d9',$d10,'$d11','$d12','$d13')";
 mysqli_query($con, "insert into articulos(nombreHerramienta,marca,modelo,nroSerie,PrecioDia,PrecioHora,PrecioSemana,PrecioMes,fechaCompra,NroFactura,Proveedor,CodigoEquipo,nota) values ('$d1','$d2', '$d3',$d4,$d5,$d6,$d7,$d8,'$d9',$d10,'$d11','$d12','$d13')") or
 die("Problemas en el select" . mysqli_error($con));
