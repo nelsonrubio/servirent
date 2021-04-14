@@ -41,6 +41,20 @@
                 </a>
               </li>
 
+              <li class="nav-header">BODEGAS</li>
+              <li class="nav-item">
+                <a href="crearBodega.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear Bodega</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoBodega.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de Bodegas</p>
+                </a>
+              </li>
+
               <li class="nav-header">ARTICULO</li>
               <li class="nav-item">
                 <a href="cargarArticulos.php" class="nav-link">

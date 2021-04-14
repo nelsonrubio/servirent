@@ -3,26 +3,9 @@ include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$registros = mysqli_query($con, "select * from roles") or
+$registros = mysqli_query($con, "select * from tipobodega") or
 die("Problemas en el select:" . mysqli_error($con));
-$cilindros = mysqli_query($con, "select * from cilindros") or
-die("Problemas en el select:" . mysqli_error($con));
-$tipoCilindro = mysqli_query($con, "select * from tipoCilindro") or
-die("Problemas en el select:" . mysqli_error($con));
-$cilindros2 = mysqli_query($con, "select * from cilindros") or
-die("Problemas en el select:" . mysqli_error($con));
-$tipoCilindro2 = mysqli_query($con, "select * from tipoCilindro") or
-die("Problemas en el select:" . mysqli_error($con));
-$pago = mysqli_query($con, "select * from metodospago") or
-die("Problemas en el select:" . mysqli_error($con));
-$cupon = mysqli_query($con, "select * from cupones") or
-die("Problemas en el select:" . mysqli_error($con));
-$status = mysqli_query($con, "select * from estatuspedidos") or
-die("Problemas en el select:" . mysqli_error($con));
-$empresa = mysqli_query($con, "select * from empresascilindros") or
-die("Problemas en el select:" . mysqli_error($con));
-$empresa2 = mysqli_query($con, "select * from empresascilindros") or
-die("Problemas en el select:" . mysqli_error($con));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,12 +63,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear bodega principal</h1>
+            <h1>Crear bodega</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Crear bodega principal</li>
+              <li class="breadcrumb-item active">Crear bodega</li>
             </ol>
           </div>
         </div>
@@ -104,128 +87,35 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
+                <label for="">Nombre de bodega</label>
                 <div class="form-group">
                   <input type="text" name="bodega" id="nombreBodega" class="form-control" placeholder="Nombre de bodega">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <div class="form-group fieldGroup">
-                  <label for="">Cantidad de cilindros</label>
-                  <div class="input-group">
-                      <input type="text" name="name[]" class="form-control" placeholder="Cantidad" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group fieldGroup">
-                  <label for="">Cilindro</label>
-                  <div class="input-group">
-                    <select class="form-control cilindro" name="email[]" style="width: 100%;">
-                      <?php
-                      while ($reg = mysqli_fetch_array($cilindros)) {
-                        echo '<option value='.$reg['idCilindro'].'>' . $reg['tipoCilindro'] . "Kg - $" . $reg['precio'] . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group fieldGroup">
-                  <label for="">Empresa de cilindros</label>
-                  <div class="input-group">
-                    <select class="form-control cilindro" name="empresa[]" style="width: 100%;">
-                      <?php
-                      while ($reg4 = mysqli_fetch_array($empresa)) {
-                        echo '<option value='.$reg4['idEmpresa'].'>' . $reg4['nombreEmpresa'] . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group fieldGroup">
-                  <label for="">Tipo de cilindros</label>
-                  <div class="input-group">
-                    <select class="form-control cilindro" name="tipo[]" style="width: 100%;">
-                        <?php
-                        while ($reg2 = mysqli_fetch_array($tipoCilindro)) {
-                          echo '<option value='.$reg2['idTipo'].'>' . $reg2['nombreTipo'] . '</option>';
-                        }
-                        ?>
-                      </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="form-group fieldGroup">
+                    <label for="">Tipo de Bodega</label>
                     <div class="input-group">
-                        <div class="input-group-addon">
-                            <a href="javascript:void(0)" class="btn btn-success addMore"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar cilindros</a>
-                        </div>
+                      <select class="form-control cilindro" name="tipoBodega" style="width: 100%;">
+                      <?php
+                          while ($reg = mysqli_fetch_array($registros)) {
+                            echo '<option value='.$reg['idTipo'].'>' . $reg['tipoBodega'] . '</option>';
+                          }
+                      ?>
+                      </select>
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
+            
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit " class="btn btn-primary btn-block ">Crear</button>
                 </div>
             </div>
           </form>
-
-          <div class="form-group fieldGroupCopy" style="display: none;">
-                    <div class="input-group">
-                      <div class="col-md-2">
-                        <input type="text" name="name[]" class="form-control" placeholder="Cantidad" />
-                      </div>
-                      <div class="col-md-2">
-                        <select class="form-control cilindro" name="email[]" style="width: 100%;">
-                          <?php
-                          while ($reg3 = mysqli_fetch_array($cilindros2)) {
-                            echo '<option value='.$reg3['idCilindro'].'>' . $reg3['tipoCilindro'] . "Kg - $" . $reg3['precio'] . '</option>';
-                          }
-                          ?>
-                      </select>
-                      </div>
-                      <div class="col-md-2">
-                        <select class="form-control cilindro" name="empresa[]" style="width: 100%;">
-                          <?php
-                          while ($reg5 = mysqli_fetch_array($empresa2)) {
-                            echo '<option value='.$reg5['idEmpresa'].'>' . $reg5['nombreEmpresa'] . '</option>';
-                          }
-                          ?>
-                        </select>
-                      </div>
-                      <div class="col-md-2">
-                        <select class="form-control cilindro" name="tipo[]" style="width: 100%;">
-                          <?php
-                          while ($reg2 = mysqli_fetch_array($tipoCilindro2)) {
-                            echo '<option value='.$reg2['idTipo'].'>' . $reg2['nombreTipo'] . '</option>';
-                          }
-                          ?>
-                        </select>
-                      </div>
-                      
-                      <div class="col-md-2">
-                        <div class="input-group-addon">
-                              <a href="javascript:void(0)" class="btn btn-danger remove"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
-                          </div>
-                      </div>
-                        
-                    </div>
-                </div>
-              </div>
-
-          </div>
         </div>
       </div>
     </section>
@@ -254,27 +144,8 @@ die("Problemas en el select:" . mysqli_error($con));
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<script>
-        $(document).ready(function() {
-            //group add limit
-            var maxGroup = 30;
 
-            //add more fields group
-            $(".addMore").click(function() {
-                if ($('body').find('.fieldGroup').length < maxGroup) {
-                    var fieldHTML = '<div class="form-group fieldGroup row">' + $(".fieldGroupCopy").html() + '</div>';
-                    $('body').find('.fieldGroup:last').after(fieldHTML);
-                } else {
-                    alert('Maximum ' + maxGroup + ' groups are allowed.');
-                }
-            });
-
-            //remove fields group
-            $("body").on("click", ".remove", function() {
-                $(this).parents(".fieldGroup").remove();
-            });
-        });
-    </script>
+       
 <!-- Bootstrap -->
 <!--<script src="plugins/bodegas/crearBodega.js"></script>-->
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
