@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-04-2021 a las 11:45:09
+-- Tiempo de generación: 28-04-2021 a las 17:08:00
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -55,6 +55,29 @@ INSERT INTO `articulos` (`idArticulo`, `nombreHerramienta`, `marca`, `modelo`, `
 (3, 'Taladro de pared', 'mankitar', 'KN67-23R', 123456801, '10000', '500', '50000', '100000', '0000-00-00', 20304050, 'Daka', '1012', 'Este talador es para el acero.', ''),
 (4, 'dfdfdf', 't', 'dfdfdf', 4343434, '343434', '3443434', '43434343', '5454545', '0000-00-00', 34343434, 'cvcvcvcv', '34343434', 'fdsfdsfds', 'articulos/IMG_20200427_125451_203.jpg'),
 (5, 'Pala', 'stanly', 'KN67-23R', 123456789, '30', '10', '150', '300', '2021-04-02', 123456789, 'palita', '987654321', 'Herramienta nueva', 'articulos/Koala.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bodegas`
+--
+
+CREATE TABLE `bodegas` (
+  `idBodega` int(11) NOT NULL,
+  `nombreBodega` varchar(500) NOT NULL,
+  `fechaCreacion` date NOT NULL,
+  `tipoBodega` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bodegas`
+--
+
+INSERT INTO `bodegas` (`idBodega`, `nombreBodega`, `fechaCreacion`, `tipoBodega`) VALUES
+(1, '', '2021-04-14', 1),
+(2, '', '2021-04-14', 1),
+(3, 'Bodega de prueba', '2021-04-14', 1),
+(4, 'Bodega de prueba 2', '2021-04-14', 2);
 
 -- --------------------------------------------------------
 
@@ -170,6 +193,25 @@ INSERT INTO `roles` (`idRol`, `nombreRol`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipobodega`
+--
+
+CREATE TABLE `tipobodega` (
+  `idTipo` int(11) NOT NULL,
+  `tipoBodega` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipobodega`
+--
+
+INSERT INTO `tipobodega` (`idTipo`, `tipoBodega`) VALUES
+(1, 'Bodega de inventario'),
+(2, 'Bodega de respuesto');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -203,6 +245,12 @@ ALTER TABLE `articulos`
   ADD PRIMARY KEY (`idArticulo`);
 
 --
+-- Indices de la tabla `bodegas`
+--
+ALTER TABLE `bodegas`
+  ADD PRIMARY KEY (`idBodega`);
+
+--
 -- Indices de la tabla `cabeceranota`
 --
 ALTER TABLE `cabeceranota`
@@ -233,6 +281,12 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`idRol`);
 
 --
+-- Indices de la tabla `tipobodega`
+--
+ALTER TABLE `tipobodega`
+  ADD PRIMARY KEY (`idTipo`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -247,6 +301,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `articulos`
   MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `bodegas`
+--
+ALTER TABLE `bodegas`
+  MODIFY `idBodega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cabeceranota`
@@ -277,6 +337,12 @@ ALTER TABLE `estatusobra`
 --
 ALTER TABLE `roles`
   MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipobodega`
+--
+ALTER TABLE `tipobodega`
+  MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
