@@ -110,6 +110,7 @@ die("Problemas en el select: " . mysqli_error($con));
                     <tr>
                         <th>Identificador</th>
                         <th>Nombre Bodega</th>
+                        <th>Cantidad</th>
                         <th>Tipo de Bodega</th>
                         <th>Fecha de Creacion</th>
                     </tr>
@@ -119,12 +120,21 @@ die("Problemas en el select: " . mysqli_error($con));
                         <?php
                             while ($reg = mysqli_fetch_array($inventario)) {
                             $tipoBodega = $reg['tipoBodega'];
+                            $idBodega = $reg['idBodega'];
                             $tipo = mysqli_query($con, "select * from tipobodega where idTipo = $tipoBodega") or 
                             die("Problemas en el select: " . mysqli_error($con));
+                            $disponibleCantidad = mysqli_query($con, "select SUM(cantidad) AS totalCantidad from articulos  where idBodega = $idBodega") or 
+                            die("Problemas en el select: " . mysqli_error($con));
+                            $cantidadDisponible = mysqli_fetch_array($disponibleCantidad);
                             $regChofer = mysqli_fetch_array($tipo);
                             echo'<tr>';
                             echo '<td>' . $reg['idBodega'] . '</td>';
                             echo '<td>' . $reg['nombreBodega'] . '</td>';  
+                            if($cantidadDisponible['totalCantidad'] != null){
+                            echo '<td>' . $cantidadDisponible['totalCantidad'] . '</td>';  
+                           }else{
+                            echo '<td>' . 0 . '</td>';  
+                           }
                             echo '<td>'.$regChofer['tipoBodega'].'</td>';
                             echo'<td>'.$reg['fechaCreacion'].'</td>';  
                             ?>
