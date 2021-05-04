@@ -4,11 +4,11 @@ session_start();
 $id = $_GET['id'];
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$detalle = mysqli_query($con, "select * from detallebodega where idBodega = $id") or
+$detalle = mysqli_query($con, "select * from articulos where idBodega = $id") or
 die("Problemas en el select:" . mysqli_error($con));
-$infoBodega = mysqli_query($con, "select * from bodegas where idBodegas = $id") or
+$bodega = mysqli_query($con, "select * from bodegas where idBodega = $id") or
 die("Problemas en el select:" . mysqli_error($con));
-$bodega = mysqli_fetch_array($infoBodega)
+$reg2 = mysqli_fetch_array($bodega);
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@ $bodega = mysqli_fetch_array($infoBodega)
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Detalle de bodega: <?php echo $bodega['nombreBodega'];?></h1>
+            <h1>Detalle de bodega: <?php echo $reg2['nombreBodega'];?></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -94,10 +94,13 @@ $bodega = mysqli_fetch_array($infoBodega)
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Cantidad</th>
-                    <th>Kilo</th>
-                    <th>Tipo de cilindro</th>
-                    <th>Empresa de cilindro</th>
+                    <th>Nombre</th>
+                    <th>Codigo articulo</th>
+                    <th>Cantidad/th>
+                    <th>Precio dia</th>
+                    <th>Precio hora</th>
+                    <th>Precio semana</th>
+                    <th>Precio mes</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -105,11 +108,14 @@ $bodega = mysqli_fetch_array($infoBodega)
                     <?php
                         while ($reg = mysqli_fetch_array($detalle)) {
                             echo'<tr>';
-                                echo '<td>' . $reg['cantidad'] . '</td>';
+                                echo '<td>' . $reg['nombreHerramienta'] . '</td>';
                                 
-                                echo '<td>'.$reg['pesoCilindro'].' Kg</td>';
-                                echo '<td>'.$reg['tipoCilindro'].'</td>';
-                                echo'<td>'.$reg['empresaCilindro'].'</td>';   
+                                echo '<td>'.$reg['CodigoEquipo'].' Kg</td>';
+                                echo '<td>'.$reg['cantidad'].'</td>';
+                                echo'<td>'.$reg['PrecioDia'].'</td>';
+                                echo'<td>'.$reg['PrecioHora'].'</td>';    
+                                echo'<td>'.$reg['PrecioSemana'].'</td>'; 
+                                echo'<td>'.$reg['PrecioMes'].'</td>'; 
                         
                     ?>
                     

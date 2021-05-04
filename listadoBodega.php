@@ -130,10 +130,15 @@ die("Problemas en el select: " . mysqli_error($con));
                             echo'<tr>';
                             echo '<td>' . $reg['idBodega'] . '</td>';
                             echo '<td>' . $reg['nombreBodega'] . '</td>';  
+
                             if($cantidadDisponible['totalCantidad'] != null){
-                            echo '<td>' . $cantidadDisponible['totalCantidad'] . '</td>';  
-                           }else{
-                            echo '<td>' . 0 . '</td>';  
+                            ?>
+                             <td><a href="detalleBodega.php?id=<?php echo $idBodega;?>"><?php echo $cantidadDisponible['totalCantidad'];?></a></td>
+                            <?php
+                            }else{
+                            ?>
+                              <td>0 </td>;  
+                            <?php
                            }
                             echo '<td>'.$regChofer['tipoBodega'].'</td>';
                             echo'<td>'.$reg['fechaCreacion'].'</td>';  
