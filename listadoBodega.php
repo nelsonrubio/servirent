@@ -153,7 +153,52 @@ die("Problemas en el select: " . mysqli_error($con));
                 </table> 
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-                     Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
+                  <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Nombre Bodega</th>
+                        <th>Cantidad</th>
+                        <th>Tipo de Bodega</th>
+                        <th>Fecha de Creacion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    
+                        <?php
+                            while ($reg = mysqli_fetch_array($repuesto)) {
+                            $tipoBodega = $reg['tipoBodega'];
+                            $idBodega = $reg['idBodega'];
+                            $tipo = mysqli_query($con, "select * from tipobodega where idTipo = $tipoBodega") or 
+                            die("Problemas en el select: " . mysqli_error($con));
+                            $disponibleCantidad = mysqli_query($con, "select SUM(cantidad) AS totalCantidad from repuesto  where idBodega = $idBodega") or 
+                            die("Problemas en el select: " . mysqli_error($con));
+                            $cantidadDisponible = mysqli_fetch_array($disponibleCantidad);
+                            $regChofer = mysqli_fetch_array($tipo);
+                            echo'<tr>';
+                            echo '<td>' . $reg['idBodega'] . '</td>';
+                            echo '<td>' . $reg['nombreBodega'] . '</td>';  
+
+                            if($cantidadDisponible['totalCantidad'] != null){
+                            ?>
+                             <td><a href="detalleRepuesto.php?id=<?php echo $idBodega;?>"><?php echo $cantidadDisponible['totalCantidad'];?></a></td>
+                            <?php
+                            }else{
+                            ?>
+                              <td>0 </td>;  
+                            <?php
+                           }
+                            echo '<td>'.$regChofer['tipoBodega'].'</td>';
+                            echo'<td>'.$reg['fechaCreacion'].'</td>';  
+                            ?>
+                            </tr>
+                        <?php   
+                        }
+                        ?>
+                    </tr> 
+                    </tbody>
+                    
+                </table> 
                   </div>
                 </div>
               </div>

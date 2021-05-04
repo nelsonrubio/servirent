@@ -63,6 +63,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="cargarRepuesto.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear repuesto</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="listadoArticulos.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Listado de articulo</p>
