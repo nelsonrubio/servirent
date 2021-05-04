@@ -216,7 +216,9 @@ die("Problemas en el select:" . mysqli_error($con));
             var d11 = $(this).find('td').eq(10).html();
             var d12 = $(this).find('td').eq(11).html();
             var d13 = $(this).find('td').eq(12).html();
-            valor=new Array(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13);
+            var d14 = $(this).find('td').eq(13).html();
+            var d15 = $(this).find('td').eq(14).html();
+            valor=new Array(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15);
             valores.push(valor);
             console.log (valor);
            // alert(valor);
@@ -224,7 +226,7 @@ die("Problemas en el select:" . mysqli_error($con));
             return false;
             }
             else{
-                $.post('insertarArticulos.php', {d1:d1, d2:d2, d3:d3, d4:d4, d5:d5, d6:d6, d7:d7, d8:d8, d9:d9, d10:d10, d11:d11, d12:d12, d13:d13}, function (datos) {
+                $.post('insertarArticulos.php', {d1:d1, d2:d2, d3:d3, d4:d4, d5:d5, d6:d6, d7:d7, d8:d8, d9:d9, d10:d10, d11:d11, d12:d12, d13:d13, d14:d14, d15:d15}, function (datos) {
                     $('#respuesta').html(datos);
                 });
                 contador = contador + 1;
