@@ -7,6 +7,9 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
 $usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 4") or
 die("Problemas en el select:" . mysqli_error($con));
 
+$obra = mysqli_query($con, "select * from obras") or
+die("Problemas en el select:" . mysqli_error($con));
+
 $articulo = mysqli_query($con, "select * from articulos") or
 die("Problemas en el select:" . mysqli_error($con));
 
@@ -131,7 +134,13 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Nombre de la obra</label>
                 <div class="form-group">
-                  <input type="text" name="obra" class="form-control usuario" id="descripcion" placeholder="Nombre de obra">
+                <select class="form-control cilindro" name="obra" style="width: 100%;">
+                        <?php
+                        while ($reg2 = mysqli_fetch_array($obra)) {
+                          echo '<option value='.$reg2['idObra'].'>' . $reg2['nombreObra'] . '</option>';
+                        }
+                        ?>
+                      </select>
                 </div>
               </div>
               <div class="col-md-6">

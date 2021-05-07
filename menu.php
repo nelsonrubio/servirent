@@ -75,6 +75,20 @@
                 </a>
               </li>
 
+              <li class="nav-header">REGISTRO DE OBRAS</li>
+              <li class="nav-item">
+                <a href="crearObra.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear obra</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoObras.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de obra</p>
+                </a>
+              </li>
+
               <li class="nav-header">NOTA PEDIDO</li>
               <li class="nav-item">
                 <a href="crearCotizacion.php" class="nav-link">

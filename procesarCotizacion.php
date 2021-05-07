@@ -21,7 +21,7 @@ include('conexion/conexion.php');
     //echo "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')";
 
     mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota,email,idChofer) 
-    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable',1, '$email', $chofer)") or 
+    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin',$obra,'$responsable',1, '$email', $chofer)") or 
     die("Problemas en el select" . mysqli_error($con));
     $idnota = mysqli_insert_id($con);
 
