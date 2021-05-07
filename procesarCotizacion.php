@@ -13,13 +13,15 @@ include('conexion/conexion.php');
     $articuloArr = $_POST['articulo'];
     $alquilerArr = $_POST['alquiler'];
     $cantidadArr = $_POST['cantidad'];
+    $email = $_POST['email'];
+    $chofer = $_POST['chofer'];
 
     // se inserta la cabecera de la nota de pedido
 
     //echo "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')";
 
-    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota) 
-    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable',1)") or 
+    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota,email,idChofer) 
+    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable',1, '$email', $chofer)") or 
     die("Problemas en el select" . mysqli_error($con));
     $idnota = mysqli_insert_id($con);
 

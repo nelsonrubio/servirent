@@ -113,7 +113,7 @@ die("Problemas en el select:" . mysqli_error($con));
                                     echo   '<td>Chofer</td>';
                                 }
                                 if($reg['tipoUsuario'] == 4){
-                                    echo   '<td>Master</td>';
+                                    echo   '<td>Chofer</td>';
                                 }
                                 ?>
                                 <td>

@@ -4,7 +4,7 @@ session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
  
-$usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 3") or
+$usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 4") or
 die("Problemas en el select:" . mysqli_error($con));
 
 $articulo = mysqli_query($con, "select * from articulos") or
@@ -93,16 +93,22 @@ die("Problemas en el select:" . mysqli_error($con));
           <form role="form" method="POST" action="procesarCotizacion.php">
             <label for="">Datos de la nota</label>
             <div class="row">
-              <div class="col-md-6">
-                <label for="">Nombre</label>
-                <div class="form-group">
-                    <input type="text" name="nombre" class="form-control descripcion" id="descripcion" placeholder="Nombre">
-                </div>
-              </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="">Razon social</label>
                 <div class="form-group">
-                    <input type="text" name="rut" class="form-control descripcion" id="descripcion" placeholder="Razon social">
+                    <input type="text" name="nombre" class="form-control descripcion" id="descripcion" placeholder="Razon social">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Rut</label>
+                <div class="form-group">
+                    <input type="text" name="rut" class="form-control descripcion" id="descripcion" placeholder="Rut">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Email del cliente</label>
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control descripcion" id="email" placeholder="email del cliente">
                 </div>
               </div>
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
@@ -147,6 +153,22 @@ die("Problemas en el select:" . mysqli_error($con));
                 <label for="">Fecha fin</label>
                 <div class="form-group">
                    <input type="text" name="fechaFin" class="form-control rut" id="fechaFin" placeholder="Fecha final">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+              <div class="form-group fieldGroup">
+                    <label for="">Chofer</label>
+                    <div class="input-group">
+                      <select class="form-control cilindro" name="chofer" style="width: 100%;">
+                        <?php
+                        while ($reg2 = mysqli_fetch_array($usuario)) {
+                          echo '<option value='.$reg2['idUsuario'].'>' . $reg2['nombreUsuario'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                 </div>
               </div>
             </div>
