@@ -7,6 +7,12 @@ $id = $_REQUEST['id'];
 $nota = mysqli_query($con, "select * from cabeceranota where idcabeceranota = $id") or
 die("Problemas en el select:" . mysqli_error($con));
 $info = mysqli_fetch_array($nota);
+$idUsuario = $info['idChofer'];
+
+$chofer = mysqli_query($con, "select * from usuarios where idUsuario = $idUsuario") or
+die("Problemas en el select:" . mysqli_error($con));
+$infoChofer = mysqli_fetch_array($chofer);
+
 $detallenota = mysqli_query($con, "select * from detallenota where idcabeceranota = $id") or
 die("Problemas en el select:" . mysqli_error($con));
 
@@ -148,7 +154,12 @@ die("Problemas en el select:" . mysqli_error($con));
                 </div>
               </div>
             </div>
-
+            <div class="row">
+              <div class="col-md-12">
+              <label for="">Chofer</label>
+                <input type="text" name="fechaFin" class="form-control rut" id="fechaFin" placeholder="Fecha final" value="<?php echo $infoChofer['nombreUsuario'];?>" disabled>
+              </div>
+            </div><br />
             <div class="row">
               <div class="col-md-12">
               <table id="example2" class="table table-bordered table-striped">
