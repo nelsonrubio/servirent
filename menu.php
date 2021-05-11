@@ -113,7 +113,7 @@
               <li class="nav-item">
                 <a href="listadoNotas.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
-                  <p>Listado de nota</p>
+                  <p>articulos alquilados</p>
                 </a>
               </li>
             
