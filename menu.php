@@ -102,6 +102,20 @@
                   <p>Listado de nota</p>
                 </a>
               </li>
+
+              <li class="nav-header">REPORTES</li>
+              <li class="nav-item">
+                <a href="codigosAsignados.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Codigos asigandos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoNotas.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de nota</p>
+                </a>
+              </li>
             
               <?php
               }
