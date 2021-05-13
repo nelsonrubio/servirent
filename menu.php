@@ -111,7 +111,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listadoNotas.php" class="nav-link">
+                <a href="articulosAlquilados.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>articulos alquilados</p>
                 </a>
