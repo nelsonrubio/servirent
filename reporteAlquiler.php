@@ -109,31 +109,17 @@ die("Problemas en el select:" . mysqli_error($con));
                         
                            
                             echo'<tr>';
-                                echo '<td>' . $reg['nombreCliente'] . '</td>';
-                                echo '<td>' . $reg['rut'] . '</td>';  
+                                echo '<td>' . $reg['nombreObra'] . '</td>';
+                                echo '<td>' . $reg['modeloarticulo'] . '</td>';  
+                                echo '<td>' . $reg['cantidad'] . '</td>';  
 
                                 ?>
-                                <td>
-                                  <a href="detalleCilindro.php?id=<?php echo $idPedido3;?>"> 
-                                    <?php echo $reg['TotalCilindro'];?>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="metodoPagoGanancias.php?id=<?php echo $idPedido3;?>"> 
-                                    Ver
-                                  </a>
-                                </td>
 
                                 <?php
-                                echo '<td>' . $reg['fechaPedido'] . '</td>'; 
-                                echo '<td>' . $reg['total'] . '</td>';
+                                
                                 ?>
                             </tr>
                             <?php
-                        }
-                        while($reg2 = mysqli_fetch_array($gasto)){
-                          $montoGasto = $reg2['gasto'];
-                          $totalGasto += $montoGasto; 
                         }
                     ?>
                   </tr> 
