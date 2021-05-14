@@ -6,7 +6,9 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
 $idObra = $_POST['obra'];
 $usuario = mysqli_query($con, "SELECT cabeceranota.nombreObra, detallenota.modeloarticulo, detallenota.cantidad FROM cabeceranota INNER JOIN detallenota ON cabeceranota.idcabeceranota = detallenota.idcabeceranota WHERE cabeceranota.nombreObra = $idObra") or
 die("Problemas en el select:" . mysqli_error($con));
-
+$obras2= mysqli_query($con, "SELECT * FROM obras where idObra = $idObra") or
+die("Problemas en el select:" . mysqli_error($con));
+$reg22 = mysqli_fetch_array($obras2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Reporte de ganancias</title>
+  <title>Reporte alquiler</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -68,12 +70,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Reporte de ganancias</h1>
+            <h1>Reporte de alquiler</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Reporte de ganancias</li>
+              <li class="breadcrumb-item active">Reporte de alquiler</li>
             </ol>
           </div>
         </div>
@@ -88,7 +90,7 @@ die("Problemas en el select:" . mysqli_error($con));
           <!-- /.card-header -->
           <div class="card-body">
           <form role="form" method="POST">
-            <label for="">Resultado</label>
+            <label for="">Nombre de la obra: <?php echo $reg22['nombreObra'];?></label>
             <div class="row">
               <div class="col-md-12">
               <table id="example2" class="table table-bordered table-striped">
@@ -103,59 +105,25 @@ die("Problemas en el select:" . mysqli_error($con));
                   <tbody>
  
                     <?php
-                    $total = 0;
-                    $totalGasto = 0;
                         while ($reg = mysqli_fetch_array($usuario)) {
-                        
+                          $idObra = $reg['nombreObra'];
+                          $obras = mysqli_query($con, "SELECT * FROM obras where idObra = $idObra") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $reg2 = mysqli_fetch_array($obras);
                            
                             echo'<tr>';
-                                echo '<td>' . $reg['nombreCliente'] . '</td>';
-                                echo '<td>' . $reg['rut'] . '</td>';  
+                                echo '<td>' . $reg2['nombreObra'] . '</td>';
+                                echo '<td>' . $reg['modeloarticulo'] . '</td>';  
+                                echo '<td>' . $reg['cantidad'] . '</td>'; 
+                          }
 
-                                ?>
-                                <td>
-                                  <a href="detalleCilindro.php?id=<?php echo $idPedido3;?>"> 
-                                    <?php echo $reg['TotalCilindro'];?>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="metodoPagoGanancias.php?id=<?php echo $idPedido3;?>"> 
-                                    Ver
-                                  </a>
-                                </td>
-
-                                <?php
-                                echo '<td>' . $reg['fechaPedido'] . '</td>'; 
-                                echo '<td>' . $reg['total'] . '</td>';
-                                ?>
-                            </tr>
-                            <?php
-                        }
-                        while($reg2 = mysqli_fetch_array($gasto)){
-                          $montoGasto = $reg2['gasto'];
-                          $totalGasto += $montoGasto; 
-                        }
+           
                     ?>
                   </tr> 
                   </tbody>
                   
                 </table>
-                <p><strong>Total de ingreso en el dia: $<?php echo $total;?> </strong></p>
-                <p><strong>Total de gasto en el dia: $<?php echo $totalGasto;?> </strong></p>
-                <?php
-                  if($total - $totalGasto > 0){
-                ?>
-                  <p><strong>Total de ganancias en el dia: $<?php echo $total - $totalGasto;?> </strong></p>
-                <?php
-                 }
-                ?>
-                <?php
-                  if($total - $totalGasto < 0){
-                ?>
-                <p><strong>Total de perdida en el dia: $<?php echo $total - $totalGasto;?> </strong></p>
-                <?php
-                 }
-                ?>
+                
               </div>
             </div>
 
@@ -191,7 +159,7 @@ die("Problemas en el select:" . mysqli_error($con));
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<script src="plugins/reporteGasto/index.js"></script>
+<script src="plugins/reporteEstatus/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

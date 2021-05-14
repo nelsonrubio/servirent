@@ -29,6 +29,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
 </head>
  
 <body class="hold-transition sidebar-mini">
@@ -86,10 +87,15 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" method="reporteAlquiler.php">
+          <form role="form" method="POST" action="reporteAlquiler.php">
             <div class="row">
+              <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
+            </div>
+            
+            <div class="row">
+ 
               <div class="col-md-12">
-                <div class="form-group">
+              <div class="form-group">
                 <label for="">Selecione la obra</label>
                     <select class="form-control chofer" name="obra" style="width: 100%;">
                       <?php
@@ -99,13 +105,11 @@ die("Problemas en el select:" . mysqli_error($con));
                       ?>
                     </select>
                   </div>
-                </div>
               </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit " class="btn btn-primary btn-block ">Generar reporte</button>
+                    <button type="submit " class="btn btn-primary btn-block ">Registrar</button>
                 </div>
             </div>
           </form>
@@ -140,11 +144,18 @@ die("Problemas en el select:" . mysqli_error($con));
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<script src="plugins/gastos/index.js"></script>
+<script src="plugins/reporteEstatus/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
