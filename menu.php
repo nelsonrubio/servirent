@@ -116,6 +116,18 @@
                   <p>articulos alquilados</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="existenciaArticulo.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Existencia articulo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="existenciaRepuesto.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Existencia repuesto</p>
+                </a>
+              </li>
             
               <?php
               }
