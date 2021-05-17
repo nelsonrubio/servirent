@@ -108,7 +108,7 @@ die("Problemas en el select: " . mysqli_error($con));
                   <table id="example2" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Identificador</th>
+                        <th>Id</th>
                         <th>Nombre Bodega</th>
                         <th>Cantidad</th>
                         <th>Tipo de Bodega</th>
@@ -156,7 +156,7 @@ die("Problemas en el select: " . mysqli_error($con));
                   <table id="example2" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Identificador</th>
+                        <th>Id</th>
                         <th>Nombre Bodega</th>
                         <th>Cantidad</th>
                         <th>Tipo de Bodega</th>
