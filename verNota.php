@@ -182,7 +182,7 @@ die("Problemas en el select:" . mysqli_error($con));
                         while ($reg2 = mysqli_fetch_array($detallenota)) {
                             $estado = $reg2['statusherramienta'];
                             $idArticulo = $reg2['modeloarticulo'];
-                            $idObra = $reg['nombreObra'];
+                            $idObra = $reg2['nombreObra'];
                             $estatus = mysqli_query($con, "select * from estatus where idEstatus = $estado") or
                             die("Problemas en el select:" . mysqli_error($con));
                             $reg3 = mysqli_fetch_array($estatus);
