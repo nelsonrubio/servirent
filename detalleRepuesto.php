@@ -109,9 +109,9 @@ $reg2 = mysqli_fetch_array($bodega);
  
                     <?php
                         while ($reg = mysqli_fetch_array($detalle)) {
-                            echo'<tr>';
+                          if($reg['cantidad'] <= $reg['stock']){
+                            echo'<tr style="background-color: #ea6262;">';
                                 echo '<td>' . $reg['nombreRepuesto'] . '</td>';
-                                
                                 echo '<td>'.$reg['codOrigen'].' Kg</td>';
                                 echo '<td>'.$reg['CodInterno'].'</td>';
                                 echo'<td>'.$reg['proveedor'].'</td>';
@@ -119,15 +119,23 @@ $reg2 = mysqli_fetch_array($bodega);
                                 echo'<td>'.$reg['cantidad'].'</td>'; 
                                 echo'<td>'.$reg['precio'].'</td>'; 
                                 echo'<td>'.$reg['precioVenta'].'</td>'; 
+                            echo '</tr>';
+                          }else{
+                            echo'<tr>';
+                              echo '<td>' . $reg['nombreRepuesto'] . '</td>';
+                              echo '<td>'.$reg['codOrigen'].' Kg</td>';
+                              echo '<td>'.$reg['CodInterno'].'</td>';
+                              echo'<td>'.$reg['proveedor'].'</td>';
+                              echo'<td>'.$reg['stock'].'</td>';    
+                              echo'<td>'.$reg['cantidad'].'</td>'; 
+                              echo'<td>'.$reg['precio'].'</td>'; 
+                              echo'<td>'.$reg['precioVenta'].'</td>'; 
+                            echo '</tr>';
+                          }
+                        }
                         
-                    ?>
-                    
-                    <?php
-                    }
-                    ?>
-                  </tr> 
+                    ?> 
                   </tbody>
-                   
                 </table>
               </div>
               <!-- /.card-body -->

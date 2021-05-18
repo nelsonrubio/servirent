@@ -131,7 +131,7 @@ die("Problemas en el select:" . mysqli_error($con));
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label for="">Nombre de la obra</label>
                 <div class="form-group">
                 <select class="form-control cilindro" name="obra" style="width: 100%;">
@@ -143,7 +143,7 @@ die("Problemas en el select:" . mysqli_error($con));
                       </select>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" style="display:none;">
                 <label for="">Responsable de la obra</label>
                 <div class="form-group">
                    <input type="text" name="responsable" class="form-control rut" id="porcentaje" placeholder="Responsable">
@@ -151,7 +151,7 @@ die("Problemas en el select:" . mysqli_error($con));
               </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="display:none;">
               <div class="col-md-6">
                 <label for="">Fecha inicio</label>
                 <div class="form-group">

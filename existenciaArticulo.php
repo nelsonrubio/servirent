@@ -3,8 +3,9 @@ include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$registros = mysqli_query($con, "select * from tipobodega") or
+$registros = mysqli_query($con, "SELECT * from bodegas where tipoBodega = 1") or
 die("Problemas en el select:" . mysqli_error($con));
+
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Crear Bodegas</title>
+  <title>Reporte alquiler</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -26,6 +27,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
 </head>
  
 <body class="hold-transition sidebar-mini">
@@ -41,12 +43,12 @@ die("Problemas en el select:" . mysqli_error($con));
         
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        
+    
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-   
+
+
     <!-- Right navbar links -->
     
   </nav>
@@ -64,12 +66,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear obra</h1>
+            <h1>Reporte alquiler</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Crear obra</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Existencia articulo</li>
             </ol>
           </div>
         </div>
@@ -83,82 +85,33 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="bodega" action="procesarObra.php">
+          <form role="form" method="POST" action="resultExistencia.php">
             <div class="row">
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label for="">Nombre de obra</label>
-                <div class="form-group">
-                  <input type="text" name="nombreObra" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Direccion de la obra</label>
-                <div class="form-group">
-                  <input type="text" name="direccion" id="nombreObra" class="form-control" placeholder="Direccion de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Telefono de la obra</label>
-                <div class="form-group">
-                  <input type="text" name="telefono" id="nombreObra" class="form-control" placeholder="Telefono de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4">
-                <label for="">Responsable</label>
-                <div class="form-group">
-                  <input type="text" name="responsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Telefono del responsable</label>
-                <div class="form-group">
-                  <input type="text" name="telefonoResponsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Correo del responsable</label>
-                <div class="form-group">
-                  <input type="text" name="correo" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <label for="">Fecha de inicio</label>
-                <div class="form-group">
-                  <input type="text" name="fechaInicio"  class="form-control" id="datepicker" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="">Fecha de finalizacion</label>
-                <div class="form-group">
-                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" placeholder="Nombre de la obra">
-                  <input type="hidden" name="tipoBodega" value="1">
-                </div>
-              </div>
-              
-            </div>
             
             <div class="row">
+ 
+              <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Selecione una bodega</label>
+                    <select class="form-control chofer" name="bodegaId" style="width: 100%;">
+                      <?php
+                      while ($reg2 = mysqli_fetch_array($registros)) {
+                        echo '<option value='.$reg2['idBodega'].'>' . $reg2['nombreBodega'] . '</option>';
+                      }
+                      ?>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <button type="submit " class="btn btn-primary btn-block ">Crear</button>
+                    <button type="submit " class="btn btn-primary btn-block ">Registrar</button>
                 </div>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </section>
@@ -187,19 +140,23 @@ die("Problemas en el select:" . mysqli_error($con));
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-
-       
-<!-- Bootstrap -->
-<!--<script src="plugins/bodegas/crearBodega.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
-<script src="plugins/cilindros/index.js"></script>
+<!-- Bootstrap -->
+<script src="plugins/reporteEstatus/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
-
+ 
 </body>
 </html>
