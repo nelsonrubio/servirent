@@ -14,21 +14,21 @@ $d10 = $_POST['d10'];
 
 //Se valida si el codigo interno del equipo existe
 $inventario = mysqli_query($con, "select * from repuesto where CodInterno = '$d3'") or 
-die("Problemas en el select: " . mysqli_error($con));
+die("Problemas en el select1: " . mysqli_error($con));
 
 if(mysqli_num_rows($inventario)> 0){
   $reg = mysqli_fetch_array($inventario);
   $total = $reg['cantidad'] + $d4;
   mysqli_query($con, "update repuesto set cantidad= $total where CodInterno = '$d3'") or
-  die("Problemas en el select:" . mysqli_error($con));
+  die("Problemas en el select2:" . mysqli_error($con));
 
 
 }
 else{
-   
+   //echo "insert into repuesto(idBodega,codOrigen,CodInterno,cantidad, proveedor,nroFactura,stock,precio,precioVenta, nombreRepuesto) values ('$d1','$d2', '$d3', $d4, '$d5','$d6',$d7,$d8,$d9,'$d10')";
   mysqli_query($con, "insert into repuesto(idBodega,codOrigen,CodInterno,cantidad, proveedor,nroFactura,stock,precio,precioVenta, nombreRepuesto) 
-  values ($d1,'$d2', '$d3', $d4, '$d5','$d6',$d7,$d8,$d9,'$d10')") or
-  die("Problemas en el select" . mysqli_error($con));
+  values ('$d1','$d2', '$d3', $d4, '$d5','$d6',$d7,$d8,$d9,'$d10')") or
+  die("Problemas en el select3" . mysqli_error($con));
   if(mysqli_affected_rows($con)){
     echo 2;
   }else{

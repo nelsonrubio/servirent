@@ -112,7 +112,7 @@ $reg2 = mysqli_fetch_array($bodega);
                           if($reg['cantidad'] <= $reg['stock']){
                             echo'<tr style="background-color: #ea6262;">';
                                 echo '<td>' . $reg['nombreRepuesto'] . '</td>';
-                                echo '<td>'.$reg['codOrigen'].' Kg</td>';
+                                echo '<td>'.$reg['codOrigen'].' </td>';
                                 echo '<td>'.$reg['CodInterno'].'</td>';
                                 echo'<td>'.$reg['proveedor'].'</td>';
                                 echo'<td>'.$reg['stock'].'</td>';    
@@ -123,7 +123,7 @@ $reg2 = mysqli_fetch_array($bodega);
                           }else{
                             echo'<tr>';
                               echo '<td>' . $reg['nombreRepuesto'] . '</td>';
-                              echo '<td>'.$reg['codOrigen'].' Kg</td>';
+                              echo '<td>'.$reg['codOrigen'].' </td>';
                               echo '<td>'.$reg['CodInterno'].'</td>';
                               echo'<td>'.$reg['proveedor'].'</td>';
                               echo'<td>'.$reg['stock'].'</td>';    

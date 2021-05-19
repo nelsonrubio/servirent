@@ -110,7 +110,7 @@ $reg2 = mysqli_fetch_array($bodega);
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreHerramienta'] . '</td>';
                                 
-                                echo '<td>'.$reg['CodigoEquipo'].' Kg</td>';
+                                echo '<td>'.$reg['CodigoEquipo'].'</td>';
                                 echo '<td>'.$reg['cantidad'].'</td>';
                                 echo'<td>'.$reg['PrecioDia'].'</td>';
                                 echo'<td>'.$reg['PrecioHora'].'</td>';    

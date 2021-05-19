@@ -98,6 +98,9 @@ die("Problemas en el select:" . mysqli_error($con));
                         while ($reg = mysqli_fetch_array($registros)) {
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreObra'] . '</td>';
+                                echo '<td>' . $reg['responsable'] . '</td>';
+                                echo '<td>' . $reg['fechaInicio'] . '</td>';
+                                echo '<td>' . $reg['FechaFinalizacion'] . '</td>';
                             echo '</tr>';
 
                         }
