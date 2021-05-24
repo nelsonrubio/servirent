@@ -75,6 +75,20 @@
                 </a>
               </li>
 
+              <li class="nav-header">REGISTRO DE CONSTRUCTORAS</li>
+              <li class="nav-item">
+                <a href="crearConstructora.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear constructora</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoConstructora.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de constructora</p>
+                </a>
+              </li>
+
               <li class="nav-header">REGISTRO DE OBRAS</li>
               <li class="nav-item">
                 <a href="crearObra.php" class="nav-link">
