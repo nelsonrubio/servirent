@@ -88,7 +88,7 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="bodega" action="procesarObra.php">
+          <form role="form" method="POST" id="bodega" action="procesarEdicionObra.php">
             <div class="row">
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
