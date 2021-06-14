@@ -3,8 +3,10 @@ include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$registros = mysqli_query($con, "select * from tipobodega") or
+$idObras = $_GET['id'];
+$registros = mysqli_query($con, "select * from obras where idObra = $idObras") or
 die("Problemas en el select:" . mysqli_error($con));
+$obra = mysqli_fetch_array($registros);
 
 $constructora = mysqli_query($con, "select * from constructora") or
 die("Problemas en el select:" . mysqli_error($con));
@@ -108,21 +110,21 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-4">
                 <label for="">Nombre de obra</label>
                 <div class="form-group">
-                  <input type="text" name="nombreObra" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
+                  <input type="text" name="nombreObra" id="nombreObra" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['nombreObra'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="">Direccion de la obra</label>
                 <div class="form-group">
-                  <input type="text" name="direccion" id="nombreObra" class="form-control" placeholder="Direccion de la obra">
+                  <input type="text" name="direccion" id="nombreObra" class="form-control" placeholder="Direccion de la obra" value="<?php echo $obra['direccion'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="">Telefono de la obra</label>
                 <div class="form-group">
-                  <input type="text" name="telefono" id="nombreObra" class="form-control" placeholder="Telefono de la obra">
+                  <input type="text" name="telefono" id="nombreObra" class="form-control" placeholder="Telefono de la obra" value="<?php echo $obra['telefono'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
@@ -132,21 +134,21 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-4">
                 <label for="">Responsable</label>
                 <div class="form-group">
-                  <input type="text" name="responsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
+                  <input type="text" name="responsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['responsable'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="">Telefono del responsable</label>
                 <div class="form-group">
-                  <input type="text" name="telefonoResponsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
+                  <input type="text" name="telefonoResponsable" id="nombreObra" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['telefonoResponsable'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="">Correo del responsable</label>
                 <div class="form-group">
-                  <input type="text" name="correo" id="nombreObra" class="form-control" placeholder="Nombre de la obra">
+                  <input type="text" name="correo" id="nombreObra" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['correo'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
@@ -156,14 +158,14 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <label for="">Fecha de inicio</label>
                 <div class="form-group">
-                  <input type="text" name="fechaInicio"  class="form-control" id="datepicker" placeholder="Nombre de la obra">
+                  <input type="text" name="fechaInicio"  class="form-control" id="datepicker" placeholder="Nombre de la obra" value="<?php echo $obra['fechaInicio'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="">Fecha de finalizacion</label>
                 <div class="form-group">
-                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" placeholder="Nombre de la obra">
+                  <input type="text" name="fechaFin" id="fechaFin" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['FechaFinalizacion'];?>">
                   <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
@@ -172,7 +174,7 @@ die("Problemas en el select:" . mysqli_error($con));
             
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit " class="btn btn-primary btn-block ">Crear</button>
+                    <button type="submit " class="btn btn-primary btn-block ">Editar</button>
                 </div>
             </div>
           </form>

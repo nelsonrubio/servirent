@@ -90,21 +90,36 @@ die("Problemas en el select:" . mysqli_error($con));
                   <thead>
                   <tr>
                     <th>Nombre de la obra</th>
+                    <th>Responsable</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Final</th>
+                    <th>Constructora</th>
+                    <th>Opciones</th>
                   </tr>
                   </thead>
                   <tbody>
  
                     <?php
                         while ($reg = mysqli_fetch_array($registros)) {
+                          $idConstructora = $reg['idConstructora'];
+                          $idObra = $reg['idObra'];
+                          $constru = mysqli_query($con, "select * from constructora where idConstructoras = $idConstructora") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $constructora = mysqli_fetch_array($constru);
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreObra'] . '</td>';
                                 echo '<td>' . $reg['responsable'] . '</td>';
                                 echo '<td>' . $reg['fechaInicio'] . '</td>';
                                 echo '<td>' . $reg['FechaFinalizacion'] . '</td>';
-                            echo '</tr>';
+                                echo '<td>'. $constructora['nombreConstructora'] .'</td>';
+   
 
                         }
                     ?>
+                    <td>
+                       <a href="editarObra.php?id=<?php echo $idObra;?> "class ="btn btn-primary" ><i class='far fa-edit' title='Editar'></i></a>
+                    </td>
+                    </tr>
                   </tr> 
                   </tbody>
                    
