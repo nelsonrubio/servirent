@@ -7,7 +7,7 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
 $usuario = mysqli_query($con, "select * from usuarios where tipoUsuario = 4") or
 die("Problemas en el select:" . mysqli_error($con));
 
-$obra = mysqli_query($con, "select * from obras") or
+$obra = mysqli_query($con, "select * from constructora") or
 die("Problemas en el select:" . mysqli_error($con));
 
 $articulo = mysqli_query($con, "select * from articulos") or
@@ -96,6 +96,17 @@ die("Problemas en el select:" . mysqli_error($con));
           <form role="form" method="POST" action="procesarCotizacion.php">
             <label for="">Datos de la nota</label>
             <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                  <label for="">Tipo de operacion</label>
+                    <select class="form-control tipo" name="operacion" style="width: 100%;">
+                       <option value="1">Venta</option>
+                       <option value="2">Alquiler</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
               <div class="col-md-4">
                 <label for="">Razon social</label>
                 <div class="form-group">
@@ -132,15 +143,21 @@ die("Problemas en el select:" . mysqli_error($con));
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label for="">Nombre de la obra</label>
+                <label for="">Nombre de la constructora</label>
                 <div class="form-group">
-                <select class="form-control cilindro" name="obra" style="width: 100%;">
+                <select class="form-control cilindro" name="constructora" id="constructora" style="width: 100%;">
                         <?php
                         while ($reg2 = mysqli_fetch_array($obra)) {
-                          echo '<option value='.$reg2['idObra'].'>' . $reg2['nombreObra'] . '</option>';
+                          echo '<option value='.$reg2['idConstructoras'].'>' . $reg2['nombreConstructora'] . '</option>';
                         }
                         ?>
                       </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="">Obras de la constructora</label>
+                <div class="form-group">
+                  <select name="obras" id="obras" class="form-control"></select>
                 </div>
               </div>
               <div class="col-md-6" style="display:none;">
@@ -307,6 +324,17 @@ die("Problemas en el select:" . mysqli_error($con));
 
 $(document).ready(function() {
 var maxGroup = 30;
+
+
+$("#constructora").on('change', function () {
+        $("#constructora option:selected").each(function () {
+            var id_category = $(this).val();
+            $.post("obtenerObras.php", { id_category: id_category }, function(data) {
+              console.log("result", data)
+                $("#obras").html(data);
+            });
+        });
+   });
 
 //add more fields group
 $(".addMore").click(function() {

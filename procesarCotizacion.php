@@ -6,7 +6,8 @@ include('conexion/conexion.php');
     $rut = $_POST['rut'];
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
-    $obra = $_POST['obra'];
+    $obra = $_POST['obras'];
+    $constructora = $_POST['constructora'];
     $responsable = null;
     $fechaInicio = null;
     $fechaFin = null;
@@ -15,13 +16,14 @@ include('conexion/conexion.php');
     $cantidadArr = $_POST['cantidad'];
     $email = $_POST['email'];
     $chofer = $_POST['chofer'];
+    $tipoOperacion = $_POST['operacion'];
 
     // se inserta la cabecera de la nota de pedido
 
     //echo "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra) values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin','$obra','$responsable')";
 
-    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota,email,idChofer) 
-    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin',$obra,'$responsable',1, '$email', $chofer)") or 
+    mysqli_query($con, "insert into cabeceranota(nombreAlquilino,rut,direccion,telefono,fechaInicio,fechaFin,nombreObra,responsableObra,estatusNota,email,idChofer,idConstructora,tipoOperacion) 
+    values ('$nombre','$rut','$direccion','$telefono','$fechaInicio','$fechaFin',$obra,'$responsable',1, '$email', $chofer, $constructora, $tipoOperacion)") or 
     die("Problemas en el select" . mysqli_error($con));
     $idnota = mysqli_insert_id($con);
 
