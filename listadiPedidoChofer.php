@@ -95,6 +95,7 @@ die("Problemas en el select:" . mysqli_error($con));
                     <th>Rut</th>
                     <th>Direccion</th>
                     <th>Telefono</th>
+                    <th>Estatus</th>
                     <th>Opciones</th>
    
                   </tr>
@@ -104,6 +105,10 @@ die("Problemas en el select:" . mysqli_error($con));
                     <?php
                         while ($reg = mysqli_fetch_array($pedidos)) {
                           $id = $reg['idcabeceranota'];
+                          $estatus =$reg['estatusNota'];
+                          $status = mysqli_query($con, "select * from estatus where  idEstatus = $estatus") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $reg2 = mysqli_fetch_array($status)
                      ?>
                      <?php
               
@@ -112,6 +117,7 @@ die("Problemas en el select:" . mysqli_error($con));
                                 echo '<td>' . $reg['rut'] . '</td>';  
                                 echo '<td>'.$reg['direccion'].'</td>';
                                 echo '<td>'.$reg['telefono'].'</td>';
+                                echo '<td>'.$reg2['estatus'].'</td>';
                                 echo '<td>';
                                   
                                     ?>

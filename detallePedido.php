@@ -4,26 +4,23 @@ session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
 $idPedido = $_GET['id'];
-$estatus = mysqli_query($con, "select * from  estatuspedidos") or
+$estatus = mysqli_query($con, "select * from  estatus") or
 die("Problemas en el select:" . mysqli_error($con));
-$pedido = mysqli_query($con, "select * from pedidos where idPedido = $idPedido") or
+$pedido = mysqli_query($con, "select * from cabeceranota where idcabeceranota = $idPedido") or
 die("Problemas en el select:" . mysqli_error($con));
 $pedi = mysqli_fetch_array($pedido);
-$idBodega = $pedi['idBodegas'];
+ 
 $idChofer = $pedi['idChofer'];
-$pago = $pedi['metodoPago'];
-$bodegas = mysqli_query($con, "select * from bodegas where idBodegas = $idBodega") or
-die("Problemas en el select:" . mysqli_error($con));
-$bode = mysqli_fetch_array($bodegas);
+ 
+ 
 
-$chofer = mysqli_query($con, "select * from usuarios where tipoUSuario = 3 and idUsuario = $idChofer") or
+$chofer = mysqli_query($con, "select * from usuarios where tipoUSuario = 4 and idUsuario = $idChofer") or
 die("Problemas en el select:" . mysqli_error($con));
 $cho = mysqli_fetch_array($chofer);
 
-$metodo = mysqli_query($con, "select * from pagopedido where idPedido = $idPedido") or
-die("Problemas en el select:" . mysqli_error($con));
+ 
 
-$detallePedido = mysqli_query($con, "select * from detallepedido where idPedido = $idPedido ORDER BY idDetalle desc") or
+$detallePedido = mysqli_query($con, "select * from detallenota where iddetallenota = $idPedido  ") or
 die("Problemas en el select:" . mysqli_error($con));
  
  
@@ -83,12 +80,12 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Detalle de pedido</h1>
+            <h1>Detalle de nota</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Detalle de pedido</li>
+              <li class="breadcrumb-item active">Detalle de nota</li>
             </ol>
           </div>
         </div>
@@ -103,7 +100,7 @@ die("Problemas en el select:" . mysqli_error($con));
           <!-- /.card-header -->
           <div class="card-body">
           <form role="form" method="POST" id="registroPedido">
-            <label for="">Datos de pedido</label>
+            <label for="">Datos de nota</label>
             <div class="row">
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
@@ -111,13 +108,13 @@ die("Problemas en el select:" . mysqli_error($con));
               <div class="col-md-6">
                 <div class="form-group">
                 <label for="">Nombre del cliente</label>
-                  <input type="text" name="usuario" class="form-control usuario" placeholder="Nombre de cliente" value = "<?php echo $pedi['nombreCliente'];?>" disabled>
+                  <input type="text" name="usuario" class="form-control usuario" placeholder="Nombre de cliente" value = "<?php echo $pedi['nombreAlquilino'];?>" disabled>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                 <label for="">Telefono del cliente</label>
-                   <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $pedi['rut'];?>" disabled>
+                   <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $pedi['telefono'];?>" disabled>
                 </div>
               </div>
             </div>
@@ -127,11 +124,11 @@ die("Problemas en el select:" . mysqli_error($con));
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Cilindro</th>
+                    <th>Articulo</th>
                     <th>Cantidad</th>
+                    <th>Tipo de alquiler</th>
                     <th>Precio</th>
-                    <th>Empresa de cilindros</th>
-                    <th>Tipo de cilindro</th>
+                    
                   </tr>
                   </thead>
                   <tbody>
@@ -139,13 +136,33 @@ die("Problemas en el select:" . mysqli_error($con));
                     <?php
                     $total= 0;
                         while ($reg10 = mysqli_fetch_array($detallePedido)) {
-                          $total += $reg10['cantidad'] * $reg10['precio'];
+                          $idArticulo = $reg10['modeloarticulo'];
+                          $articulo = mysqli_query($con, "select * from articulos where idArticulo = $idArticulo") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $art = mysqli_fetch_array($articulo);
+              
                             echo'<tr>';
-                                echo '<td>' . $reg10['cilindro'] .'Kg</td>';
+                                echo '<td>' . $art['nombreHerramienta'] .'Kg</td>';
                                 echo '<td>' . $reg10['cantidad'] . '</td>';  
-                                echo '<td>$'. $reg10['cantidad'] * $reg10['precio'].'</td>';
-                                echo '<td>'.$reg10['empresaCilindro'].'</td>';
-                                echo '<td>'.$reg10['tipoCilindro'].'</td>';  
+                                echo '<td> '. $reg10['alquiler']. '</td>';
+                                if($reg10['alquiler'] == 'mes'){
+                                  echo '<td>$'. $art['PrecioMes']. '</td>';
+                                  $total += $reg10['cantidad'] * $art['PrecioMes'];
+                                }
+                                else if($reg10['alquiler'] == 'hora'){
+                                  echo '<td>$'. $art['PrecioHora']. '</td>';
+                                  $total += $reg10['cantidad'] * $art['PrecioHora'];
+                                }
+                                else if($reg10['alquiler'] == 'dia'){
+                                  echo '<td>$'. $art['PrecioDia']. '</td>';
+                                  $total += $reg10['cantidad'] * $art['PrecioDia'];
+                                }
+                                else if($reg10['alquiler'] == 'semana'){
+                                  echo '<td>$'. $art['PrecioSemana']. '</td>';
+                                  $total += $reg10['cantidad'] * $art['PrecioSemana'];
+                                }
+                              
+                         
                         
                     ?>
                          </tr>
@@ -160,68 +177,9 @@ die("Problemas en el select:" . mysqli_error($con));
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                <label for="">Bodega</label>
-                    <input type="text" name="cantidad" class="form-control cantidad" placeholder="Cantidad" value= "<?php echo $bode['nombreBodega'];?>" disabled>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                <label for="">Chofer</label>
-                    <input type="text" name="cantidad" class="form-control cantidad" placeholder="Cantidad" value= "<?php echo $cho['nombreUsuario'];?>" disabled>
-                </div>
-              </div>
-            </div>
-            <label for="">Detalle de pago</label> <br />
-            <div class="row">
-              <div class="col-md-12">
-              <table id="example2" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Monto</th>
-                    <th>Metodo</th>
-                     
-                  </tr>
-                  </thead>
-                  <tbody>
- 
-                    <?php
-                    $total= 0;
-                        while ($reg10 = mysqli_fetch_array($metodo)) {
-                    
-                            echo'<tr>';
-                                echo '<td>' . $reg10['monto'] .'</td>';
-                                echo '<td>' . $reg10['metodo'] . '</td>';  
-                                
-                        
-                    ?>
-                         </tr>
-                    <?php
-                    }
-                    ?>
-                  </tr> 
-                  </tbody>
-                </table>
-              </div>
-              
-              <div class="col-md-12">
-                  <div class="form-group">
-                  <label  for="">Direccion</label>
-                    <textarea class="form-control direccion" name="observacion" rows="3" placeholder="Direccion" value="" disabled><?php echo $pedi['direccion'] ?></textarea>
-                  </div>
-                </div>
-            </div>
-            <label class=" " for="">Observaciones</label>
-            <div class="row  ">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <textarea class="form-control observaciones" name="observacion" rows="3" placeholder="Observaciones" id="observacion" disabled><?php echo $pedi['observaciones'] ?></textarea>
-                  </div>
-                </div>
-            </div>
+            
+      
+            
           </form>
           </div>
         </div>
