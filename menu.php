@@ -146,7 +146,32 @@
               <?php
               }
               ?>
- 
+ <?php
+              if($tipoUsuario == 4){
+            ?>
+              <li class="nav-header">PEDIDO</li>
+              <li class="nav-item">
+                <a href="listadiPedidoChofer.php" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                  <p>Listado de pedido</p>
+                </a> 
+              </li>
+              <li class="nav-header">Venta</li>
+              <li class="nav-item">
+                <a href="registrarVentas.php" class="nav-link">
+                <i class="nav-icon fas fa-plus"></i>
+                  <p>Registrar venta</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoVentasChofer.php" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                  <p>Listado venta</p>
+                </a>
+              </li>
+            <?php
+              }
+            ?>
           <li class="nav-header">CERRAR SESION</li>
           <li class="nav-item">
             <a href="cerrarSesion.php" class="nav-link">

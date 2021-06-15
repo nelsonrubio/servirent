@@ -32,12 +32,8 @@ $(document).ready(function() {
                 url: "procesarLogin.php",
                 data: "email=" + escape($('.email').val()) + "&password=" + escape($('.password').val()),
                 success: function(msg) {
+                    console.log(msg,"esto es lo que devuelvo");
                     if (msg) {
-                        $("#alert").html(msg);
-
-                        setTimeout(function() {
-                            $('#alert').fadeOut('slow');
-                        }, 5000);
                         location.href = "dashboard.php";
                     } else {
                         $("#alert").html("Usuario no registrado");

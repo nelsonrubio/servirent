@@ -4,7 +4,7 @@ session_start();
 $user=$_SESSION['nombreUsuario'];
 $userId = $_SESSION['idUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$pedidos = mysqli_query($con, "select * from pedidos where  idChofer = $userId and tipoVenta = 1 ORDER by idPedido DESC") or
+$pedidos = mysqli_query($con, "select * from cabeceranota where  idChofer = $userId and tipoOperacion = 2 ORDER by idcabeceranota DESC") or
 die("Problemas en el select:" . mysqli_error($con));
 ?>
 <!DOCTYPE html>
@@ -91,126 +91,45 @@ die("Problemas en el select:" . mysqli_error($con));
               <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Cliente</th>
+                    <th>Nombre</th>
+                    <th>Rut</th>
+                    <th>Direccion</th>
                     <th>Telefono</th>
-                    <th>Cantidad</th>
-                    <th>Bodega</th>
-                    <th>Chofer</th>
-                    <th>Estatus</th>
-                    <th>Fecha</th>
-                    <th>Hora de pedido</th>
-                    <th>Hora de entrega</th>
                     <th>Opciones</th>
+   
                   </tr>
                   </thead>
                   <tbody>
  
                     <?php
                         while ($reg = mysqli_fetch_array($pedidos)) {
-                          $id = $reg['idPedido'];
-                          $bodega = $reg['idBodegas'];
-                          $chofer = $reg['idChofer'];
-                          $estatus1 = $reg['estatusPedido'];
-
-                          $bodega = mysqli_query($con, "select * from bodegas where idBodegas= $bodega ") or
-                                    die("Problemas en el select:" . mysqli_error($con));
-                                    $bod = mysqli_fetch_array($bodega);
-                          $chofer = mysqli_query($con, "select * from usuarios where idUsuario = $chofer ") or
-                                    die("Problemas en el select:" . mysqli_error($con));
-                                    $cho = mysqli_fetch_array($chofer);
-                          $estatus = mysqli_query($con, "select * from estatuspedidos where idEstatus = $estatus1 ") or
-                                    die("Problemas en el select:" . mysqli_error($con));
-                                    $sta = mysqli_fetch_array($estatus);
+                          $id = $reg['idcabeceranota'];
                      ?>
                      <?php
-                        if($estatus1 == 6){
-                            echo'<tr style = "background-color: #B6FD7C">';
-                                echo '<td>' . $reg['nombreCliente'] . '</td>';
+              
+                            echo'<tr>';
+                                echo '<td>' . $reg['nombreAlquilino'] . '</td>';
                                 echo '<td>' . $reg['rut'] . '</td>';  
-                                echo '<td>'.$reg['TotalCilindro'].'</td>';
-                                echo '<td>'.$bod['nombreBodega'].'</td>';
-                                echo '<td>'.$cho['nombreUsuario'].'</td>';
-                                echo '<td>'.$sta['nombreEstatus'].'</td>';
-                                echo '<td>'.$reg['fechaPedido'].'</td>';
-                                echo '<td>'.$reg['horaPedido'].'</td>';
-                                echo '<td>'.$reg['horaEntrega'].'</td>';
-                    
-                                
+                                echo '<td>'.$reg['direccion'].'</td>';
+                                echo '<td>'.$reg['telefono'].'</td>';
                                 echo '<td>';
                                   
-                                    if($tipoUsuario == 1) {
+                                    ?>
                                   
-                                   echo"<a href='detallePedido.php?id=<?php echo $id;?> 'class ='btn btn-primary' ><i class='fas fa-eye' title='Editar'></i></a>";
-                                  
-                                    }else{
-                                  ?>
-                                    <a href="detallePedidoChofer.php?id=<?php echo $id;?> "class ="btn btn-primary" ><i class='fas fa-eye' title='Editar'></i></a>
+                                  <a href='detallePedido.php?id=<?php echo $id;?> 'class ='btn btn-primary' ><i class='fas fa-eye' title='Editar'></i></a>
                                   <?php
-                                    }
+                                  }
+                                     
                                   ?>
+                                     
+                                   
                                 </td>
                             </tr>
-                            <?php
-                          }
-                          else if($estatus1 == 4){
-                            echo'<tr style = "background-color: #FC7270">';
-                            echo '<td>' . $reg['nombreCliente'] . '</td>';
-                            echo '<td>' . $reg['rut'] . '</td>';  
-                            echo '<td>'.$reg['TotalCilindro'].'</td>';
-                            echo '<td>'.$bod['nombreBodega'].'</td>';
-                            echo '<td>'.$cho['nombreUsuario'].'</td>';
-                            echo '<td>'.$sta['nombreEstatus'].'</td>';
-                            echo '<td>'.$reg['fechaPedido'].'</td>';
-                            echo '<td>'.$reg['horaPedido'].'</td>';
-                            echo '<td>'.$reg['horaEntrega'].'</td>';
-                
-                            
-                            echo '<td>';
-                              
-                                if($tipoUsuario == 1) {
-                              
-                               echo"<a href='detallePedido.php?id=<?php echo $id;?> 'class ='btn btn-primary' ><i class='fas fa-eye' title='Editar'></i></a>";
-                              
-                                }else{
-                              ?>
-                                <a href="detallePedidoChofer.php?id=<?php echo $id;?> "class ="btn btn-primary" ><i class='fas fa-eye' title='Editar'></i></a>
-                              <?php
-                                }
-                              ?>
                             </td>
                         </tr>
-                        <?php
-                          }else if($estatus1 == 1){
-                            echo'<tr style = "background-color: #F8FB89">';
-                            echo '<td>' . $reg['nombreCliente'] . '</td>';
-                            echo '<td>' . $reg['rut'] . '</td>';  
-                            echo '<td>'.$reg['TotalCilindro'].'</td>';
-                            echo '<td>'.$bod['nombreBodega'].'</td>';
-                            echo '<td>'.$cho['nombreUsuario'].'</td>';
-                            echo '<td>'.$sta['nombreEstatus'].'</td>';
-                            echo '<td>'.$reg['fechaPedido'].'</td>';
-                            echo '<td>'.$reg['horaPedido'].'</td>';
-                            echo '<td>'.$reg['horaEntrega'].'</td>';
-                
-                            
-                            echo '<td>';
-                              
-                                if($tipoUsuario == 1) {
-                              
-                               echo"<a href='detallePedido.php?id=<?php echo $id;?> 'class ='btn btn-primary' ><i class='fas fa-eye' title='Editar'></i></a>";
-                              
-                                }else{
-                              ?>
-                                <a href="detallePedidoChofer.php?id=<?php echo $id;?> "class ="btn btn-primary" ><i class='fas fa-eye' title='Editar'></i></a>
-                              <?php
-                                }
-                              ?>
-                            </td>
-                        </tr>
-                        <?php
-                          }
-                        }
-                    ?>
+      
+                       
+    
                   </tr> 
                   </tbody>
                    

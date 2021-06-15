@@ -41,6 +41,17 @@ include('conexion/conexion.php');
                 values ('$idnota','$articulo','$alquiler','$cantidad',1)") or 
                 die("Problemas en el select" . mysqli_error($con));
 
+                if($tipoOperacion == 1){
+                    $registros = mysqli_query($con, "select * from articulos where idArticulo = $articulo ") or
+                    die("Problemas en el select:" . mysqli_error($con));
+                    $reg = mysqli_fetch_array($registros);
+                    $total = $reg['cantidad'] - $cantidad;
+                    
+                    mysqli_query($con, "update articulos set cantidad = $total where idArticulo=$articulo") or
+                    die("Problemas en el select:" . mysqli_error($con));
+                }
+               
+
                 echo '<script> alert("Registro completado, por favor acepte para continuar..."); window.location = "crearCotizacion.php";</script>';
                 
                 // Database insert query goes here
