@@ -11,7 +11,7 @@ die("Problemas en el select:" . mysqli_error($con));
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Listado de usuario</title>
+  <title>Listado de Obras</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,7 +68,7 @@ die("Problemas en el select:" . mysqli_error($con));
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Lista de usuarios</li>
+              <li class="breadcrumb-item active">Lista de Obras</li>
             </ol>
           </div>
         </div>

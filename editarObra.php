@@ -111,14 +111,13 @@ die("Problemas en el select:" . mysqli_error($con));
                 <label for="">Nombre de obra</label>
                 <div class="form-group">
                   <input type="text" name="nombreObra" id="nombreObra" class="form-control" placeholder="Nombre de la obra" value="<?php echo $obra['nombreObra'];?>">
-                  <input type="hidden" name="tipoBodega" value="1">
+                  <input type="hidden" name="idObra" value="<?php echo $idObras?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <label for="">Direccion de la obra</label>
                 <div class="form-group">
                   <input type="text" name="direccion" id="nombreObra" class="form-control" placeholder="Direccion de la obra" value="<?php echo $obra['direccion'];?>">
-                  <input type="hidden" name="tipoBodega" value="1">
                 </div>
               </div>
               <div class="col-md-4">
