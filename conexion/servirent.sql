@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2021 a las 11:52:47
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Tiempo de generación: 15-06-2021 a las 03:56:14
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -216,18 +216,16 @@ CREATE TABLE `obras` (
   `telefonoResponsable` varchar(500) NOT NULL,
   `correo` varchar(500) NOT NULL,
   `fechaInicio` date NOT NULL,
-  `FechaFinalizacion` date NOT NULL
+  `FechaFinalizacion` date NOT NULL,
+  `idConstructora` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `obras`
 --
 
-INSERT INTO `obras` (`idObra`, `nombreObra`, `direccion`, `telefono`, `responsable`, `telefonoResponsable`, `correo`, `fechaInicio`, `FechaFinalizacion`) VALUES
-(1, 'Prueba de obra', 'Santiago', '34345345', 'Francisco', '3465453543', 'francisco@gmail.com', '2021-05-04', '2021-05-31'),
-(2, 'Prueba de obra', 'Maracaibo', '04246142358', 'Nelson Rubio', '245767867', 'nelsonrubio@gmail.com', '2021-05-02', '2021-05-31'),
-(3, '', 'Santiago de chile', '04246142358', 'Nelson Rubio', '', 'nelsonrubio20@gmail.com', '0000-00-00', '0000-00-00'),
-(4, '', 'Santiago de chile', '04246142358', 'Nelson Rubio', '', 'nelsonrubio20@gmail.com', '0000-00-00', '0000-00-00');
+INSERT INTO `obras` (`idObra`, `nombreObra`, `direccion`, `telefono`, `responsable`, `telefonoResponsable`, `correo`, `fechaInicio`, `FechaFinalizacion`, `idConstructora`) VALUES
+(5, 'Nelson Rubio', 'Venezuela', '04246142358', 'Nelson Rubio', '04246142358', 'nelsonrubio20@gmail.com', '2021-05-07', '2021-06-30', 1);
 
 -- --------------------------------------------------------
 
@@ -451,7 +449,7 @@ ALTER TABLE `estatusobra`
 -- AUTO_INCREMENT de la tabla `obras`
 --
 ALTER TABLE `obras`
-  MODIFY `idObra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idObra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `repuesto`
