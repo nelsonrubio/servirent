@@ -174,6 +174,22 @@ die("Problemas en el select:" . mysqli_error($con));
                    
                 </table>
                 <strong>Total a pagar: $<?php echo $total; ?></strong>
+
+                <div class="row"><br />
+                  <label for="">Estatus del pedido</label>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <select class="form-control tipo" name="tipo" style="width: 100%;">
+                          <option></option>
+                          <?php
+                          while ($reg5 = mysqli_fetch_array($estatus)) {
+                            echo '<option value='.$reg5['idEstatus'].'>' . $reg5['estatus'] . '</option>';
+                          }
+                          ?>
+                        </select>
+                      </div>
+                  </div>
+                </div>
                 </div>
               </div>
             </div>

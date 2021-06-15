@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2021 a las 03:56:14
+-- Tiempo de generación: 15-06-2021 a las 20:56:27
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -52,7 +52,7 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`idArticulo`, `nombreHerramienta`, `marca`, `modelo`, `nroSerie`, `PrecioDia`, `PrecioHora`, `PrecioSemana`, `PrecioMes`, `fechaCompra`, `NroFactura`, `Proveedor`, `CodigoEquipo`, `nota`, `directorioImagen`, `idBodega`, `cantidad`) VALUES
-(30, 'Martillo 1', 'stanly', '343j4kjfr', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu34', 'Herramienta nueva', '', 1, 165),
+(30, 'Martillo 1', 'stanly', '343j4kjfr', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu34', 'Herramienta nueva', '', 1, 135),
 (31, 'Martillo 1', 'stanly', '343j4kjfr', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu345', 'Herramienta nueva', '', 1, 144),
 (32, 'Martillo 2', 'stanly', '343j4kjfw', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu346', 'Herramienta nueva', '', 1, 36),
 (33, 'Martillo 6', 'stanly', '343j4kjfdd', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu340', 'Herramienta nueva', '', 3, 2),
@@ -106,16 +106,20 @@ CREATE TABLE `cabeceranota` (
   `responsableObra` varchar(500) NOT NULL,
   `estatusNota` int(11) NOT NULL,
   `email` varchar(500) NOT NULL,
-  `idChofer` int(11) NOT NULL
+  `idChofer` int(11) NOT NULL,
+  `idConstructora` int(11) NOT NULL,
+  `tipoOperacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cabeceranota`
 --
 
-INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`) VALUES
-(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36),
-(10, '', '', '', '', '0000-00-00', '0000-00-00', 1, '', 1, '', 39);
+INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`, `idConstructora`, `tipoOperacion`) VALUES
+(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0),
+(11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1),
+(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1),
+(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,8 @@ CREATE TABLE `constructora` (
 --
 
 INSERT INTO `constructora` (`idConstructoras`, `nombreConstructora`, `direccion`, `telefono`, `responsable`, `correo`) VALUES
-(1, 'creativa & asociados', 'Santiago de chiles', '042461423580', 'Nelson Rubio', 'nelsonrubio20@gmail.com');
+(1, 'creativa & asociados', 'Santiago de chiles', '042461423580', 'Nelson Rubio', 'nelsonrubio20@gmail.com'),
+(2, 'Construye con nosotros', 'Los altos', '123456789', 'Nelson Rubio', 'nelsonrubio20@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -160,7 +165,10 @@ CREATE TABLE `detallenota` (
 
 INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, `alquiler`, `cantidad`, `statusherramienta`) VALUES
 (9, 9, '34', 'mes', 1, 1),
-(10, 10, '30', 'hora', 0, 1);
+(10, 10, '30', 'hora', 0, 1),
+(11, 11, '30', 'hora', 30, 1),
+(12, 12, '30', 'dia', 30, 1),
+(13, 13, '30', 'mes', 30, 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +186,7 @@ CREATE TABLE `estatus` (
 --
 
 INSERT INTO `estatus` (`idEstatus`, `estatus`) VALUES
-(1, 'Alquilada'),
+(1, 'En proceso'),
 (2, 'En Reparacion'),
 (3, 'Entregada');
 
@@ -318,10 +326,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `clave`, `tipoUsuario`, `email`, `rut`, `idBodega`) VALUES
 (32, ' nelsonrubio20', '12345678', 1, 'nelsonrubio20@gmail.com', '', 0),
-(36, 'Francisco', '123456789', 4, 'francisco@gmail.com', '', 4),
-(37, 'Francia', '123456789', 1, 'francia@gmail.com', '', 0),
-(39, 'Isaac', '12345678', 4, 'isaac@gmail.com', '', 0),
-(40, 'prueba', '12345678', 4, 'prueba@gmail.com', '', 0);
+(36, 'francisco', '123456789', 4, 'francisco@gmail.com', '', 0);
 
 --
 -- Índices para tablas volcadas
@@ -419,19 +424,19 @@ ALTER TABLE `bodegas`
 -- AUTO_INCREMENT de la tabla `cabeceranota`
 --
 ALTER TABLE `cabeceranota`
-  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `constructora`
 --
 ALTER TABLE `constructora`
-  MODIFY `idConstructoras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idConstructoras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `detallenota`
 --
 ALTER TABLE `detallenota`
-  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `estatus`
@@ -473,7 +478,7 @@ ALTER TABLE `tipobodega`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
