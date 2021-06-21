@@ -112,7 +112,7 @@ $reg22 = mysqli_fetch_array($obras2);
                           $reg2 = mysqli_fetch_array($obras);
                            
                             echo'<tr>';
-                                echo '<td>' . $reg['nombreObra'] . '</td>';
+                                echo '<td>' . $reg2['nombreObra'] . '</td>';
                                 echo '<td>' . $reg['modeloarticulo'] . '</td>';  
                                 echo '<td>' . $reg['cantidad'] . '</td>';  
 
