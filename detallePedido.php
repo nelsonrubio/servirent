@@ -9,14 +9,26 @@ die("Problemas en el select:" . mysqli_error($con));
 $pedido = mysqli_query($con, "select * from cabeceranota where idcabeceranota = $idPedido") or
 die("Problemas en el select:" . mysqli_error($con));
 $pedi = mysqli_fetch_array($pedido);
+$idobra = $pedi['nombreObra'];
+$idconstructora = $pedi['idConstructora'];
+
+$infoObra = mysqli_query($con, "select * from obras where idObra = $idobra") or
+die("Problemas en el select:" . mysqli_error($con));
  
+$obra = mysqli_fetch_array($infoObra);
+
+$infoConstructora = mysqli_query($con, "select * from constructora where idConstructoras = $idconstructora") or
+die("Problemas en el select:" . mysqli_error($con));
+
+$constructora = mysqli_fetch_array($infoConstructora);
+
 $idChofer = $pedi['idChofer'];
  
  
 
 $chofer = mysqli_query($con, "select * from usuarios where tipoUSuario = 4 and idUsuario = $idChofer") or
 die("Problemas en el select:" . mysqli_error($con));
-$cho = mysqli_fetch_array($chofer);
+$chof = mysqli_fetch_array($chofer);
 
  
 
@@ -99,7 +111,7 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" id="registroPedido">
+          <form role="form" method="POST" action="procesarDetallePedido.php">
             <label for="">Datos de nota</label>
             <div class="row">
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
@@ -119,8 +131,31 @@ die("Problemas en el select:" . mysqli_error($con));
               </div>
             </div>
             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                <label for="">Constructora</label>
+                  <input type="text" name="usuario" class="form-control usuario" placeholder="Nombre de cliente" value = "<?php echo $constructora['nombreConstructora'];?>" disabled>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                <label for="">Obra</label>
+                   <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $obra['nombreObra'];?>" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
+                   <label for="">Chofer</label>
+                   <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $chof['nombreUsuario'];?>" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                <label for="">Articulos alquilados</label>
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -174,26 +209,34 @@ die("Problemas en el select:" . mysqli_error($con));
                    
                 </table>
                 <strong>Total a pagar: $<?php echo $total; ?></strong>
+                </div>
+              </div>
+            </div>
 
-                <div class="row"><br />
-                  <label for="">Estatus del pedido</label>
+            <div class="row"><br />
                     <div class="col-md-12">
                       <div class="form-group">
+                      <label for="">Estatus del pedido</label>
                         <select class="form-control tipo" name="tipo" style="width: 100%;">
-                          <option></option>
+                          <option>Seleccione una opcion</option>
                           <?php
-                          while ($reg5 = mysqli_fetch_array($estatus)) {
-                            echo '<option value='.$reg5['idEstatus'].'>' . $reg5['estatus'] . '</option>';
-                          }
+                            while ($reg5 = mysqli_fetch_array($estatus)) {
+                              if($reg5['idEstatus'] != "1" || $reg5['idEstatus'] != "2" || $reg5['idEstatus'] != "5" ){
+                                echo $reg5['idEstatus'];
+                                echo '<option value='.$reg5['idEstatus'].'>' . $reg5['estatus'] . '</option>';
+                              }
+                            }
                           ?>
                         </select>
                       </div>
                   </div>
                 </div>
+                
+                <div class="row">
+                <div class="col-md-12">
+                    <button type="submit " class="btn btn-primary btn-block ">Actualizar</button>
                 </div>
-              </div>
-            </div>
-            
+                </div>
       
             
           </form>
