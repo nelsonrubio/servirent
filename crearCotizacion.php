@@ -10,6 +10,9 @@ die("Problemas en el select:" . mysqli_error($con));
 $obra = mysqli_query($con, "select * from constructora") or
 die("Problemas en el select:" . mysqli_error($con));
 
+$bodega = mysqli_query($con, "select * from bodegas") or
+die("Problemas en el select:" . mysqli_error($con));
+
 $articulo = mysqli_query($con, "select * from articulos") or
 die("Problemas en el select:" . mysqli_error($con));
 
@@ -102,6 +105,20 @@ die("Problemas en el select:" . mysqli_error($con));
                     <select class="form-control tipo" name="operacion" style="width: 100%;">
                        <option value="1">Venta</option>
                        <option value="2">Alquiler</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                  <label for="">Bodegas</label>
+                    <select class="form-control tipo" name="bodega" style="width: 100%;">
+                    <?php
+                      while ($boge = mysqli_fetch_array($bodega)) {
+                        echo '<option value='.$boge['idBodega'].'>' . $boge['nombreBodega'] . '</option>';
+                      }
+                    ?>
                     </select>
                   </div>
                 </div>
