@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2021 a las 16:50:35
--- Versión del servidor: 10.4.16-MariaDB
--- Versión de PHP: 7.4.12
+-- Tiempo de generación: 02-07-2021 a las 02:39:52
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -86,7 +86,7 @@ INSERT INTO `bodegas` (`idBodega`, `nombreBodega`, `fechaCreacion`, `tipoBodega`
 (4, 'Bodega de prueba 3', '2021-04-14', 2),
 (5, 'Bodega respuesto', '2021-05-04', 2),
 (6, 'Obra civil metropolitana', '2021-05-07', 1),
-(7, '', '2021-05-07', 1);
+(7, 'Bodega de partillos', '2021-05-07', 1);
 
 -- --------------------------------------------------------
 
@@ -108,18 +108,20 @@ CREATE TABLE `cabeceranota` (
   `email` varchar(500) NOT NULL,
   `idChofer` int(11) NOT NULL,
   `idConstructora` int(11) NOT NULL,
-  `tipoOperacion` int(11) NOT NULL
+  `tipoOperacion` int(11) NOT NULL,
+  `idBodega` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cabeceranota`
 --
 
-INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`, `idConstructora`, `tipoOperacion`) VALUES
-(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0),
-(11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1),
-(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1),
-(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2);
+INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`, `idConstructora`, `tipoOperacion`, `idBodega`) VALUES
+(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0, 0),
+(11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1, 0),
+(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 0),
+(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2, 0),
+(14, 'nelson Prueba bodega', '3434343434', 'maracaibo', '4454545454545', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +170,8 @@ INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, 
 (10, 10, '30', 'hora', 0, 1),
 (11, 11, '30', 'hora', 30, 1),
 (12, 12, '30', 'dia', 30, 1),
-(13, 13, '30', 'mes', 30, 1);
+(13, 13, '30', 'mes', 30, 1),
+(14, 14, '30', 'dia', 67, 1);
 
 -- --------------------------------------------------------
 
@@ -424,7 +427,7 @@ ALTER TABLE `bodegas`
 -- AUTO_INCREMENT de la tabla `cabeceranota`
 --
 ALTER TABLE `cabeceranota`
-  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `constructora`
@@ -436,7 +439,7 @@ ALTER TABLE `constructora`
 -- AUTO_INCREMENT de la tabla `detallenota`
 --
 ALTER TABLE `detallenota`
-  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `estatus`
