@@ -11,6 +11,14 @@ die("Problemas en el select:" . mysqli_error($con));
 $pedi = mysqli_fetch_array($pedido);
 $idobra = $pedi['nombreObra'];
 $idconstructora = $pedi['idConstructora'];
+$idBodega = $pedi['idBodega'];
+
+
+$infoBodega = mysqli_query($con, "select * from bodegas where idBodega = $idBodega") or
+die("Problemas en el select:" . mysqli_error($con));
+ 
+$bodega = mysqli_fetch_array($infoBodega);
+
 
 $infoObra = mysqli_query($con, "select * from obras where idObra = $idobra") or
 die("Problemas en el select:" . mysqli_error($con));
@@ -149,6 +157,14 @@ die("Problemas en el select:" . mysqli_error($con));
                 <div class="form-group">
                    <label for="">Chofer</label>
                    <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $chof['nombreUsuario'];?>" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                   <label for="">Bodega</label>
+                   <input type="text" name="rut" class="form-control rut" placeholder="Telefono" value = "<?php echo $bodega['nombreBodega'];?>" disabled>
                 </div>
               </div>
             </div>
