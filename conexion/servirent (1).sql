@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2021 a las 02:39:52
+-- Tiempo de generación: 06-07-2021 a las 01:21:30
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -117,10 +117,10 @@ CREATE TABLE `cabeceranota` (
 --
 
 INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`, `idConstructora`, `tipoOperacion`, `idBodega`) VALUES
-(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0, 0),
-(11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1, 0),
-(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 0),
-(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2, 0),
+(9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0, 1),
+(11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1, 1),
+(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 1),
+(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2, 1),
 (14, 'nelson Prueba bodega', '3434343434', 'maracaibo', '4454545454545', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 2, 1);
 
 -- --------------------------------------------------------
