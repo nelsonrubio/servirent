@@ -119,8 +119,15 @@ die("Problemas en el select:" . mysqli_error($con));
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          <form role="form" method="POST" action="procesarDetallePedido.php">
+          <form role="form" method="POST" action="actualizarPedido.php">
             <label for="">Datos de nota</label>
+            <div class="row">
+              <div class="col-md-12">
+              <label for="">Numero de nota</label>
+                <input type="text"   class="form-control idPedido" name="idPedido"   value="<?php echo $idPedido;?>" disabled>
+                <input type="hidden" value="13" name="idPedido">
+              </div>
+            </div>
             <div class="row">
               <div class="alert alert-success col-md-12" id="alert" style="display: none;">&nbsp;</div>
             </div>
@@ -233,7 +240,7 @@ die("Problemas en el select:" . mysqli_error($con));
                     <div class="col-md-12">
                       <div class="form-group">
                       <label for="">Estatus del pedido</label>
-                        <select class="form-control tipo" name="tipo" style="width: 100%;">
+                        <select class="form-control estatus" name="estatus" style="width: 100%;">
                           <option>Seleccione una opcion</option>
                           <?php
                             while ($reg5 = mysqli_fetch_array($estatus)) {

@@ -96,6 +96,7 @@ die("Problemas en el select:" . mysqli_error($con));
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
                     <th>Responsable de obra</th>
+                    <th>Bodega</th>
                     <th>Estado de Obra</th>
                     <th>Opciones</th>
                   </tr>
@@ -106,9 +107,14 @@ die("Problemas en el select:" . mysqli_error($con));
                         while ($reg = mysqli_fetch_array($registros)) {
                             $id = $reg['idcabeceranota'];
                             $estado = $reg['estatusNota'];
+                            $idBodega= $reg['idBodega'];
                             $estatus = mysqli_query($con, "select * from estatusobra where idEstatus = $estado") or
                             die("Problemas en el select:" . mysqli_error($con));
                             $reg2 = mysqli_fetch_array($estatus);
+
+                            $bodega = mysqli_query($con, "select * from bodegas where idBodega = $idBodega") or
+                            die("Problemas en el select:" . mysqli_error($con));
+                            $reg3 = mysqli_fetch_array($bodega);
                           
                                 echo'<tr>';
                                 echo '<td>' . $reg['nombreAlquilino'] . '</td>';
@@ -116,7 +122,8 @@ die("Problemas en el select:" . mysqli_error($con));
                                 echo '<td>' . $reg['direccion'] . '</td>';
                                 echo '<td>' . $reg['fechaInicio'] . '</td>';
                                 echo '<td>' . $reg['fechaFin'] . '</td>';
-                                echo '<td>' . $reg['responsableObra'] . '</td>'; 
+                                echo '<td>' . $reg['responsableObra'] . '</td>';
+                                echo '<td>' . $reg3['nombreBodega'] . '</td>'; 
                                 echo '<td>' . $reg2['estatus'] . '</td>';
                                 
                                  
