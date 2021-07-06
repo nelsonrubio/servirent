@@ -117,6 +117,20 @@
                 </a>
               </li>
 
+              <li class="nav-header">DEVOLUCIONES</li>
+              <li class="nav-item">
+                <a href="crearDevolucion.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear devolucion</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoDevoluciones.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de devoluciones</p>
+                </a>
+              </li>
+
               <li class="nav-header">REPORTES</li>
               <li class="nav-item">
                 <a href="codigosAsignados.php" class="nav-link">
