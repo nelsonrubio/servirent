@@ -160,7 +160,7 @@
               <?php
               }
               ?>
- <?php
+            <?php
               if($tipoUsuario == 4){
             ?>
               <li class="nav-header">PEDIDO</li>
@@ -182,6 +182,19 @@
                 <i class="nav-icon fas fa-list"></i>
                   <p>Listado venta</p>
                 </a>
+              </li>
+            <?php
+              }
+            ?>
+            <?php
+              if($tipoUsuario == 5){
+            ?>
+            <li class="nav-header">Devoluciones</li>
+              <li class="nav-item">
+                <a href="listadoDevolucionesTecnico.php" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                  <p>Listado de devoluciones</p>
+                </a> 
               </li>
             <?php
               }

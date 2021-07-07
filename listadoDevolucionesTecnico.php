@@ -64,7 +64,7 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lista de nota</h1>
+            <h1>Lista de devoluciones</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -129,7 +129,8 @@ die("Problemas en el select:" . mysqli_error($con));
                     <td> 
                       
                         <!--<a href="editarNota.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class='far fa-edit' title='Guardar'></i></a>-->
-                        <a href="verNota.php?id=<?php echo $id2;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-file-pdf' title='Guardar'></i></a>
+                        <!--<a href="reporteDevolucion.php?id=<?php echo $id2;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-file-pdf' title='Guardar'></i></a>-->
+                        <a href="actualizarDevolucion.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-file-pdf' title='Guardar'></i></a>
                     </td>
                     
                     
