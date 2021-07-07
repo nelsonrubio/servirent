@@ -9,6 +9,12 @@ die("Problemas en el select:" . mysqli_error($con));
 $info = mysqli_fetch_array($nota);
 $idUsuario = $info['idChofer'];
 $idObra = $info['nombreObra'];
+$idBodega = $info['idBodega'];
+
+
+$bodega = mysqli_query($con, "select * from bodegas where idBodega = $idBodega") or
+die("Problemas en el select:" . mysqli_error($con));
+$infoBodega = mysqli_fetch_array($bodega);
 
 $chofer = mysqli_query($con, "select * from usuarios where idUsuario = $idUsuario") or
 die("Problemas en el select:" . mysqli_error($con));
@@ -16,7 +22,7 @@ $infoChofer = mysqli_fetch_array($chofer);
 
 $infoObra = mysqli_query($con, "select * from obras where idObra = $idObra") or
 die("Problemas en el select:" . mysqli_error($con));
-                            $reg4 = mysqli_fetch_array($infoObra);
+$reg4 = mysqli_fetch_array($infoObra);
 
 $detallenota = mysqli_query($con, "select * from detallenota where idcabeceranota = $id") or
 die("Problemas en el select:" . mysqli_error($con));
@@ -164,6 +170,12 @@ die("Problemas en el select:" . mysqli_error($con));
               <label for="">Chofer</label>
                 <input type="text" name="fechaFin" class="form-control rut" id="fechaFin" placeholder="Fecha final" value="<?php echo $infoChofer['nombreUsuario'];?>" disabled>
               </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+              <label for="">Bodega</label>
+                <input type="text" name="fechaFin" class="form-control rut" id="fechaFin" placeholder="Fecha final" value="<?php echo $infoBodega['nombreBodega'];?>" disabled>
+              </div>
             </div><br />
             <div class="row">
               <div class="col-md-12">
@@ -182,16 +194,15 @@ die("Problemas en el select:" . mysqli_error($con));
                         while ($reg2 = mysqli_fetch_array($detallenota)) {
                             $estado = $reg2['statusherramienta'];
                             $idArticulo = $reg2['modeloarticulo'];
-                            $idObra = $reg2['nombreObra'];
+//$idObra2 = $reg4['idObra'];
                             $estatus = mysqli_query($con, "select * from estatus where idEstatus = $estado") or
                             die("Problemas en el select:" . mysqli_error($con));
                             $reg3 = mysqli_fetch_array($estatus);
                             $herramienta = mysqli_query($con, "select * from articulos where idArticulo = $idArticulo") or
                             die("Problemas en el select:" . mysqli_error($con));
                             $reg4 = mysqli_fetch_array($herramienta);
-
-                            $infoObra = mysqli_query($con, "select * from obra where idObra = $idObra") or
-                            die("Problemas en el select:" . mysqli_error($con));
+                            $infoObra = mysqli_query($con, "select * from articulos where idArticulo = $idArticulo") or
+                            die("Problemas en el select bbbb:" . mysqli_error($con));
                             $reg4 = mysqli_fetch_array($infoObra);
                           
                                 echo'<tr>';

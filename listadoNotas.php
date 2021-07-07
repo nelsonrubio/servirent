@@ -64,7 +64,7 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lista de articulos</h1>
+            <h1>Lista de nota</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -90,6 +90,7 @@ die("Problemas en el select:" . mysqli_error($con));
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>Nro. nota</th>
                     <th>Nombre</th>
                     <th>Rut</th>
                     <th>Direccion</th>
@@ -117,6 +118,7 @@ die("Problemas en el select:" . mysqli_error($con));
                             $reg3 = mysqli_fetch_array($bodega);
                           
                                 echo'<tr>';
+                                echo '<td>' . $reg['idcabeceranota'] . '</td>';
                                 echo '<td>' . $reg['nombreAlquilino'] . '</td>';
                                 echo '<td>' . $reg['rut'] . '</td>';
                                 echo '<td>' . $reg['direccion'] . '</td>';
