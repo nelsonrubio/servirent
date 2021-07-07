@@ -114,6 +114,7 @@ die("Problemas en el select: " . mysqli_error($con));
                         <th>Nombre alquilino</th>
                         <th>rut</th>
                         <th>Direccion</th>
+                        <th>Fecha nota</th>
  
                     </tr>
                     </thead>
@@ -131,7 +132,8 @@ die("Problemas en el select: " . mysqli_error($con));
                             echo '<td>' . $reg23['nombreAlquilino'] . '</td>';  
  
                             echo '<td>'.$reg23['rut'].'</td>';
-                            echo'<td>'.$reg23['direccion'].'</td>';  
+                            echo'<td>'.$reg23['direccion'].'</td>'; 
+                            echo'<td>'.$reg23['fechaInicio'].'</td>';   
                             echo'</tr>';
                         }
                         ?>
