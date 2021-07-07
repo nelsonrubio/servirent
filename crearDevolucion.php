@@ -102,7 +102,7 @@ die("Problemas en el select:" . mysqli_error($con));
             
             <div class="row">
                 <div class="col-md-12">
-                    <input class="btn btn-primary btn-block" id="buscarNota" value="Buscar" />
+                    <input class="btn btn-primary btn-block" id="buscarNota" value="Buscar" /> 
                 </div>
             </div>
           </form>
@@ -177,7 +177,7 @@ die("Problemas en el select:" . mysqli_error($con));
                         data.result.map(function (info, index, array) {
                             console.log(info);
                             let opcion = `<a href='verNota.php?id=`+info.idcabeceranota+`' class ='btn btn-primary' data-toggle='tooltip' data-placement='top' title='Ver'><i class='fas fa-eye' title='Guardar'></i></a>
-                            <a href=''class ='btn btn-primary' data-toggle='tooltip' data-placement='top' title='Ver'><i class='fas fa-eye' title='Guardar'></i></a>`;
+                            <a href='realizarDevolucion.php?id=`+info.idcabeceranota+`'class ='btn btn-primary' data-toggle='tooltip' data-placement='top' title='Ver'><i class="far fa-plus-square"></i></a>`;
                             
                             var tr = `<tr>
                                 <td>`+info.idcabeceranota+`</td>
