@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2021 a las 19:29:21
+-- Tiempo de generación: 07-07-2021 a las 20:48:10
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -168,7 +168,6 @@ CREATE TABLE `detallenota` (
 
 INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, `alquiler`, `cantidad`, `statusherramienta`, `devolucion`) VALUES
 (9, 9, '34', 'mes', 1, 1, 0),
-(10, 10, '30', 'hora', 0, 1, 0),
 (11, 11, '30', 'hora', 30, 1, 1),
 (12, 12, '34', 'dia', 30, 1, 0),
 (13, 13, '30', 'mes', 30, 1, 1),

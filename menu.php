@@ -156,6 +156,12 @@
                   <p>Existencia repuesto</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="historico.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Historico articulo</p>
+                </a>
+              </li>
             
               <?php
               }

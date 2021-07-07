@@ -97,7 +97,7 @@ $reg22 = mysqli_fetch_array($obras2);
                   <thead>
                   <tr>
                     <th>Nombre Obra</th>
-                    <th>Modelo</th>
+                    <th>Articulo</th>
                     <th>Cantidad</th>
                 
                   </tr>
@@ -107,13 +107,16 @@ $reg22 = mysqli_fetch_array($obras2);
                     <?php
                         while ($reg = mysqli_fetch_array($usuario)) {
                           $idObra = $reg['nombreObra'];
+                          $idArticulo = $reg['modeloarticulo'];
                           $obras = mysqli_query($con, "SELECT * FROM obras where idObra = $idObra") or
                           die("Problemas en el select:" . mysqli_error($con));
                           $reg2 = mysqli_fetch_array($obras);
-                           
+                          $articulo = mysqli_query($con, "SELECT * FROM articulos where idArticulo = $idArticulo") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $reg3 = mysqli_fetch_array($articulo);
                             echo'<tr>';
                                 echo '<td>' . $reg2['nombreObra'] . '</td>';
-                                echo '<td>' . $reg['modeloarticulo'] . '</td>';  
+                                echo '<td>' . $reg3['nombreHerramienta'] . '</td>';  
                                 echo '<td>' . $reg['cantidad'] . '</td>';  
 
                                 ?>
