@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2021 a las 01:21:30
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 07-07-2021 a las 19:29:21
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,15 +52,15 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`idArticulo`, `nombreHerramienta`, `marca`, `modelo`, `nroSerie`, `PrecioDia`, `PrecioHora`, `PrecioSemana`, `PrecioMes`, `fechaCompra`, `NroFactura`, `Proveedor`, `CodigoEquipo`, `nota`, `directorioImagen`, `idBodega`, `cantidad`) VALUES
-(30, 'Martillo 1', 'stanly', '343j4kjfr', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu34', 'Herramienta nueva', '', 1, 135),
-(31, 'Martillo 1', 'stanly', '343j4kjfr', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu345', 'Herramienta nueva', '', 1, 144),
-(32, 'Martillo 2', 'stanly', '343j4kjfw', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu346', 'Herramienta nueva', '', 1, 36),
-(33, 'Martillo 6', 'stanly', '343j4kjfdd', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu340', 'Herramienta nueva', '', 3, 2),
-(34, 'Martillo 5', 'stanly', '343j4kj12', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu349', 'Herramienta nueva', '', 3, 1),
-(35, 'Martillo 4', 'stanly', '343j4kjfv', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu348', 'Herramienta nueva', '', 2, 30),
-(36, 'Martillo 3', 'stanly', '343j4kjfc', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu347', 'Herramienta nueva', '', 2, 2),
-(37, 'Martillo 7', 'stanly', '343j4kj656', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu341', 'Herramienta nueva', '', 4, 30),
-(38, 'Martillo 8', 'stanly', '343j4kjfr000', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', 'jhfjdhfu3422', 'Herramienta nueva', '', 4, 60);
+(30, 'Pala de mezcla', 'stanly', '3Hmkp-L', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '123456', 'Herramienta nueva', '', 1, 75),
+(31, 'Podadora', 'stanly', '3498R', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '987654', 'Herramienta nueva', '', 1, 144),
+(32, 'Martillo', 'stanly', '23457BÑ', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '000000', 'Herramienta nueva', '', 1, 36),
+(33, 'tijeras', 'stanly', '782736DKCI', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '333333', 'Herramienta nueva', '', 3, 2),
+(34, 'MEzcladora', 'stanly', 'FOER34', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '252525', 'Herramienta nueva', '', 3, 1),
+(35, 'Pico', 'stanly', '38748347G', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '262626', 'Herramienta nueva', '', 2, 30),
+(36, 'Nivel', 'stanly', '3459VBLGO', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '96986', 'Herramienta nueva', '', 2, 2),
+(37, 'Taladro', 'stanly', '12348X', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '784125', 'Herramienta nueva', '', 4, 30),
+(38, 'Esmeril', 'stanly', '3874834L', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '965487', 'Herramienta nueva', '', 4, 60);
 
 -- --------------------------------------------------------
 
@@ -120,8 +120,8 @@ INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direcci
 (9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0, 1),
 (11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1, 1),
 (12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 1),
-(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 2, 1),
-(14, 'nelson Prueba bodega', '3434343434', 'maracaibo', '4454545454545', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 2, 1);
+(13, 'Francisco Ruiz', '123456789', 'Caracas', '1234567890', '0000-00-00', '0000-00-00', 5, '', 3, 'francisco@gmail.com', 36, 1, 2, 1),
+(14, 'nelson Prueba bodega', '3434343434', 'maracaibo', '4454545454545', '0000-00-00', '0000-00-00', 5, '', 3, 'nelsonrubio20@gmail.com', 36, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -158,20 +158,48 @@ CREATE TABLE `detallenota` (
   `modeloarticulo` varchar(500) NOT NULL,
   `alquiler` varchar(500) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `statusherramienta` int(11) NOT NULL
+  `statusherramienta` int(11) NOT NULL,
+  `devolucion` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detallenota`
 --
 
-INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, `alquiler`, `cantidad`, `statusherramienta`) VALUES
-(9, 9, '34', 'mes', 1, 1),
-(10, 10, '30', 'hora', 0, 1),
-(11, 11, '30', 'hora', 30, 1),
-(12, 12, '30', 'dia', 30, 1),
-(13, 13, '30', 'mes', 30, 1),
-(14, 14, '30', 'dia', 67, 1);
+INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, `alquiler`, `cantidad`, `statusherramienta`, `devolucion`) VALUES
+(9, 9, '34', 'mes', 1, 1, 0),
+(10, 10, '30', 'hora', 0, 1, 0),
+(11, 11, '30', 'hora', 30, 1, 1),
+(12, 12, '34', 'dia', 30, 1, 0),
+(13, 13, '30', 'mes', 30, 1, 1),
+(14, 14, '30', 'dia', 67, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `devolucion`
+--
+
+CREATE TABLE `devolucion` (
+  `idDevolucion` int(11) NOT NULL,
+  `idcabeceranota` int(11) NOT NULL,
+  `idarticulo` int(11) NOT NULL,
+  `nota` varchar(1000) NOT NULL,
+  `fechaDevolucion` date NOT NULL,
+  `fechaFinalizar` date DEFAULT NULL,
+  `iduser` int(11) DEFAULT NULL,
+  `statusDevolucion` int(11) NOT NULL DEFAULT 1,
+  `notaTecnico` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `devolucion`
+--
+
+INSERT INTO `devolucion` (`idDevolucion`, `idcabeceranota`, `idarticulo`, `nota`, `fechaDevolucion`, `fechaFinalizar`, `iduser`, `statusDevolucion`, `notaTecnico`) VALUES
+(1, 13, 30, 'Prueba', '2021-07-07', NULL, NULL, 1, NULL),
+(4, 14, 30, ' Se devuelve porque no prende', '2021-07-07', NULL, NULL, 1, NULL),
+(6, 11, 30, ' Se rompio el mango', '2021-07-07', NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -192,6 +220,26 @@ INSERT INTO `estatus` (`idEstatus`, `estatus`) VALUES
 (1, 'En proceso'),
 (2, 'En Reparacion'),
 (3, 'Entregada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estatusdevolucion`
+--
+
+CREATE TABLE `estatusdevolucion` (
+  `idEstatus` int(11) NOT NULL,
+  `estatus` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estatusdevolucion`
+--
+
+INSERT INTO `estatusdevolucion` (`idEstatus`, `estatus`) VALUES
+(1, 'Enviado'),
+(2, 'En proceso'),
+(3, 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -329,7 +377,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `clave`, `tipoUsuario`, `email`, `rut`, `idBodega`) VALUES
 (32, ' nelsonrubio20', '12345678', 1, 'nelsonrubio20@gmail.com', '', 0),
-(36, 'francisco', '123456789', 4, 'francisco@gmail.com', '', 0);
+(36, 'francisco', '123456789', 4, 'francisco@gmail.com', '', 0),
+(42, 'Victor', '12345678', 5, 'victor@gmail.com', '', 0);
 
 --
 -- Índices para tablas volcadas
@@ -366,9 +415,21 @@ ALTER TABLE `detallenota`
   ADD PRIMARY KEY (`iddetallenota`);
 
 --
+-- Indices de la tabla `devolucion`
+--
+ALTER TABLE `devolucion`
+  ADD PRIMARY KEY (`idDevolucion`);
+
+--
 -- Indices de la tabla `estatus`
 --
 ALTER TABLE `estatus`
+  ADD PRIMARY KEY (`idEstatus`);
+
+--
+-- Indices de la tabla `estatusdevolucion`
+--
+ALTER TABLE `estatusdevolucion`
   ADD PRIMARY KEY (`idEstatus`);
 
 --
@@ -442,9 +503,21 @@ ALTER TABLE `detallenota`
   MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT de la tabla `devolucion`
+--
+ALTER TABLE `devolucion`
+  MODIFY `idDevolucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `estatus`
 --
 ALTER TABLE `estatus`
+  MODIFY `idEstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `estatusdevolucion`
+--
+ALTER TABLE `estatusdevolucion`
   MODIFY `idEstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -481,7 +554,7 @@ ALTER TABLE `tipobodega`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

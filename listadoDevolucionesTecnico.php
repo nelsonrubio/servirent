@@ -130,7 +130,7 @@ die("Problemas en el select:" . mysqli_error($con));
                       
                         <!--<a href="editarNota.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Editar"><i class='far fa-edit' title='Guardar'></i></a>-->
                         <!--<a href="reporteDevolucion.php?id=<?php echo $id2;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-file-pdf' title='Guardar'></i></a>-->
-                        <a href="actualizarDevolucion.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-file-pdf' title='Guardar'></i></a>
+                        <a href="actualizarDevolucion.php?id=<?php echo $id;?> "class ="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reprote"><i class='fas fa-eye' title='Guardar'></i></a>
                     </td>
                     
                     
