@@ -103,6 +103,20 @@
                 </a>
               </li>
 
+              <li class="nav-header">LISTADO DE PRECIO</li>
+              <li class="nav-item">
+                <a href="crearListado.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear listado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoprecio.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de precio</p>
+                </a>
+              </li>
+
               <li class="nav-header">NOTA PEDIDO</li>
               <li class="nav-item">
                 <a href="crearCotizacion.php" class="nav-link">
@@ -135,13 +149,13 @@
               <li class="nav-item">
                 <a href="codigosAsignados.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
-                  <p>Codigos asigandos</p>
+                  <p>Codigos asignados</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="articulosAlquilados.php" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
-                  <p>articulos alquilados</p>
+                  <p>Articulos alquilados</p>
                 </a>
               </li>
               <li class="nav-item">
