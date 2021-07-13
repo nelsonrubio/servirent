@@ -27,7 +27,7 @@ $reg4 = mysqli_fetch_array($infoObra);
 $detallenota = mysqli_query($con, "select * from detallenota where idcabeceranota = $id") or
 die("Problemas en el select:" . mysqli_error($con));
 
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +49,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
- 
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -60,17 +60,17 @@ die("Problemas en el select:" . mysqli_error($con));
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        
+
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-    
+
       </li>
     </ul>
 
 
 
     <!-- Right navbar links -->
-    
+
   </nav>
   <!-- /.navbar -->
 
@@ -196,7 +196,7 @@ die("Problemas en el select:" . mysqli_error($con));
                   </tr>
                   </thead>
                   <tbody>
- 
+
                     <?php
                         while ($reg2 = mysqli_fetch_array($detallenota)) {
                             $estado = $reg2['statusherramienta'];
@@ -211,31 +211,24 @@ die("Problemas en el select:" . mysqli_error($con));
                             $infoObra = mysqli_query($con, "select * from articulos where idArticulo = $idArticulo") or
                             die("Problemas en el select bbbb:" . mysqli_error($con));
                             $reg4 = mysqli_fetch_array($infoObra);
-                          
+
                                 echo'<tr>';
                                 echo '<td>' . $reg4['nombreHerramienta'] . '</td>';
                                 echo '<td>' . $reg2['alquiler'] . '</td>';
                                 echo '<td>' . $reg2['cantidad'] . '</td>';
                                 echo '<td>' . $reg3['estatus'] . '</td>';
-                                if($reg2['devolucion'] == 1){
-                                  echo '<td>Herramienta devuelta</td>';
-                                }else{
-                                  echo '<td style="display: flex; justify-content: space-around;"> 
-                                    <input type="checkbox" id="articulo" name="vehicle1" value='.$idArticulo.'>
-                                    <input type="text" class="form-control rut" style="width: 100px;" id="cantidad" name="vehicle1" />
-                                  </td>';
-                                }
+                                echo '<td> <input type="checkbox" id="articulo" name="vehicle1" value='.$idArticulo.'></td>';
 
-        
+
                     ?>
-                    
+
                         </tr>
                     <?php
                     }
                     ?>
                   </tr> 
                   </tbody>
-                   
+
                 </table>
                 <div class="row">
                     <div class="col-md-12">
@@ -249,14 +242,50 @@ die("Problemas en el select:" . mysqli_error($con));
                     </div>
                 </div>
               </div>
-        
+
             </div>
 
           </form>
 
 
 
-          
+          <div class="form-group fieldGroupCopy" style="display: none;">
+                    <div class="input-group">
+
+                      <div class="col-md-3">
+                          <select class="form-control cilindro" name="articulo[]" style="width: 100%;">
+                          <?php
+                          while ($reg2 = mysqli_fetch_array($articulo)) {
+                            echo '<option value='.$reg2['idArticulo'].'>' . $reg2['marca'] . " - " . $reg2['modelo'] . '</option>';
+                          }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                      <select class="form-control cilindro" name="alquiler[]" style="width: 100%;">
+                        <option value='dia'>Por dia</option>
+                        <option value='hora'>Por hora</option>
+                        <option value='semana'>Por semana</option>
+                        <option value='mes'>Por mes</option>
+                    </select>
+                      </div>
+                      <div class="col-md-3">
+                        <input type="text" name="cantidad[]" class="form-control" placeholder="Cantidad" />
+                      </div>
+
+
+                      <div class="col-md-3">
+                        <div class="input-group-addon">
+                              <a href="javascript:void(0)" class="btn btn-danger remove"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
+                          </div>
+                      </div>
+
+                    </div>
+                </div>
+              </div>
+
+
+          </div>
         </div>
       </div>
     </section>
@@ -299,8 +328,7 @@ $(".addMore").click(function() {
 
 $("#articulo").change(function() {
     let idArticulo = $("#articulo").val();
-    let cantidad = $("#cantidad").val();
-     array.push({idArticulo, cantidad});
+     array.push(idArticulo);
 });
 
 $("#generar").click(function(){
@@ -322,9 +350,9 @@ $("#generar").click(function(){
                     }
                   }
         });
-         
+
     }
-    
+
 })
 
 //remove fields group
@@ -347,6 +375,6 @@ $("body").on("click", ".remove", function() {
 
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
- 
+
 </body>
 </html>
