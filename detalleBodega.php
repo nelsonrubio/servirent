@@ -96,11 +96,13 @@ $reg2 = mysqli_fetch_array($bodega);
                   <tr>
                     <th>Nombre</th>
                     <th>Codigo articulo</th>
-                    <th>Cantidad/th>
+                    <th>Cantidad</th>
                     <th>Precio dia</th>
                     <th>Precio hora</th>
                     <th>Precio semana</th>
                     <th>Precio mes</th>
+                    <th>Pasillo</th>
+                    <th>Casillero</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -116,6 +118,8 @@ $reg2 = mysqli_fetch_array($bodega);
                                 echo'<td>'.$reg['PrecioHora'].'</td>';    
                                 echo'<td>'.$reg['PrecioSemana'].'</td>'; 
                                 echo'<td>'.$reg['PrecioMes'].'</td>'; 
+                                echo'<td>'.$reg['pasillo'].'</td>'; 
+                                echo'<td>'.$reg['casillero'].'</td>'; 
                         
                     ?>
                     

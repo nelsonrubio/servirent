@@ -102,6 +102,8 @@ $reg2 = mysqli_fetch_array($bodega);
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Precio venta</th>
+                    <th>Pasillo</th>
+                    <th>Casillero</th>
  
                   </tr>
                   </thead>
@@ -119,6 +121,8 @@ $reg2 = mysqli_fetch_array($bodega);
                                 echo'<td>'.$reg['cantidad'].'</td>'; 
                                 echo'<td>'.$reg['precio'].'</td>'; 
                                 echo'<td>'.$reg['precioVenta'].'</td>'; 
+                                echo'<td>'.$reg['pasillo'].'</td>'; 
+                                echo'<td>'.$reg['casillero'].'</td>'; 
                             echo '</tr>';
                           }else{
                             echo'<tr>';
@@ -130,6 +134,8 @@ $reg2 = mysqli_fetch_array($bodega);
                               echo'<td>'.$reg['cantidad'].'</td>'; 
                               echo'<td>'.$reg['precio'].'</td>'; 
                               echo'<td>'.$reg['precioVenta'].'</td>'; 
+                              echo'<td>'.$reg['pasillo'].'</td>'; 
+                                echo'<td>'.$reg['casillero'].'</td>'; 
                             echo '</tr>';
                           }
                         }

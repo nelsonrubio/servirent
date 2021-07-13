@@ -92,6 +92,7 @@ die("Problemas en el select:" . mysqli_error($con));
                 <div class="col-md-12">
                     <label for="">Nro. Devolucion</label>
                     <input type="text" class="form-control devolucion" name="devolucion" value="<?php echo $id;?>" disabled>
+                    <input type="hidden" class="form-control maldito" name="maldito" value="<?php echo $id;?>">
                 </div>
             </div>
                 <div class="row">

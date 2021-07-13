@@ -100,21 +100,15 @@ die("Problemas en el select:" . mysqli_error($con));
                     <?php
                         while ($reg = mysqli_fetch_array($registros)) {
                           $id = $reg['idUsuario'];
+                          $typeUser = $reg['tipoUsuario'];
+                          $tipo = mysqli_query($con, "select * from roles where idRol = $typeUser") or
+                          die("Problemas en el select:" . mysqli_error($con));
+                          $reg2 = mysqli_fetch_array($tipo);
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreUsuario'] . '</td>';
                                 echo '<td>' . $reg['email'] . '</td>';  
-                                if($reg['tipoUsuario'] == 1){
-                                    echo   '<td>Administrador</td>';
-                                }
-                                if($reg['tipoUsuario'] == 2){
-                                    echo   '<td>Invitado</td>';
-                                }
-                                if($reg['tipoUsuario'] == 3){
-                                    echo   '<td>Chofer</td>';
-                                }
-                                if($reg['tipoUsuario'] == 4){
-                                    echo   '<td>Chofer</td>';
-                                }
+                                echo '<td>' . $reg2['nombreRol'] . '</td>';  
+                                
                                 ?>
                                 <td>
                                 <a href="editarUsuario.php?id=<?php echo $id;?> "class ="btn btn-primary" ><i class='far fa-edit' title='Editar'></i></a>

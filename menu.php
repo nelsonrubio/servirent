@@ -205,6 +205,25 @@
             <?php
               }
             ?>
+            <?php
+              if($tipoUsuario == 6){
+            ?>
+            <li class="nav-header">NOTA PEDIDO</li>
+              <li class="nav-item">
+                <a href="crearCotizacion.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Crear nota</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listadoNotas.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Listado de nota</p>
+                </a>
+              </li>
+            <?php
+              }
+            ?>
           <li class="nav-header">CERRAR SESION</li>
           <li class="nav-item">
             <a href="cerrarSesion.php" class="nav-link">
