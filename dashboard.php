@@ -1,7 +1,11 @@
 <?php 
+include('conexion/conexion.php');
 session_start();
 $user=$_SESSION['nombreUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
+$fechaActual = date('Y-m-d');
+$cumple = mysqli_query($con, "select * from usuarios where fechaNacimiento = '$fechaActual'") or
+die("Problemas en el select:" . mysqli_error($con));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +71,31 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
+        <h4>Cumpleañeros del dia</h4>
+        <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Usuario</th>
+                    <th>Fecha de nacimiento</th>
+              
+                  </tr>
+                  </thead>
+                  <tbody>
+ 
+                    <?php
+                        while ($reg = mysqli_fetch_array($cumple)) {
+                            echo'<tr>';
+                                echo '<td>' . $reg['nombreUsuario'] . '</td>';
+                                echo '<td>' . $reg['fechaNacimiento'] . '</td>';  
+                                ?>
+                            </tr>
+                            <?php
+                        }
+                    ?>
+                  </tr> 
+                  </tbody>
+                   
+                </table>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -79,8 +108,8 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+ 
+</aside>
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->

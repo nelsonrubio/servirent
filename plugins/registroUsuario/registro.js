@@ -1,4 +1,7 @@
 $(document).ready(function() {
+      $("#fechaFin").datepicker({
+        format: 'yyyy-mm-dd'
+    });
     $('#registro').validate({
         rules: {
             usuario: {
@@ -36,7 +39,7 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: "procesarRegistro.php",
-                data: "usuario=" + escape($('.usuario').val()) + "&email=" + escape($('.email').val()) + "&password=" + escape($('.password').val()) + "&tipo=" + escape($('.tipo').val()),
+                data: "usuario=" + escape($('.usuario').val()) + "&email=" + escape($('.email').val()) + "&password=" + escape($('.password').val()) + "&tipo=" + escape($('.tipo').val()) + "&fecha=" + escape($('.fechaFin').val()),
                 success: function(response) {
                     console.log(response);
                     Swal.fire(

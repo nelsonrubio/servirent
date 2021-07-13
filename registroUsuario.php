@@ -18,6 +18,7 @@ die("Problemas en el select:" . mysqli_error($con));
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css" integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==" crossorigin="anonymous" />
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Theme style -->
@@ -115,6 +116,16 @@ die("Problemas en el select:" . mysqli_error($con));
                 </div>
               </div>
             </div>
+   
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="fechaFin" id="fechaFin" class="form-control fechaFin" placeholder="Fecha de cumpleaños">
+                    <input type="hidden" name="tipoBodega" value="1">
+                  </div>
+                </div>
+              </div>
+       
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit " class="btn btn-primary btn-block ">Registrar</button>
@@ -151,7 +162,9 @@ die("Problemas en el select:" . mysqli_error($con));
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous"></script>
 <script src="plugins/registroUsuario/registro.js"></script>
+<script src="plugins/cilindros/index.js"></script>
 <script src="plugins/jquery-validation/jquery.validate.min.js "></script>
 <script src="plugins/jquery-validation/additional-methods.min.js "></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
