@@ -11,7 +11,7 @@ class PDF extends FPDF
         // Movernos a la derecha
         $this->Cell(60);
         // Título
-        $this->Cell(70,10,'Reporte de nota de pedidos',0,0,'C');
+        $this->Cell(70,10,'Reporte de devolucion',0,0,'C');
         // Salto de línea
         $this->Ln(20);
     }
@@ -43,30 +43,13 @@ class PDF extends FPDF
     {
         $this->SetXY(10,77);
         $this->SetFont('Arial','',10);
-        //Siendo un array tipo: $datos => $fila
-        //Significa que $datos tiene 'nombre' 'apellido' 'matricula'
-        //$fila tiene cada valor de los antes mencionados
-        include('conexion/conexion.php');
-        $idDevolucion = $_GET['id'];
-        $registros = mysqli_query($con, "select * from detallenota where idcabeceranota = $idDevolucion") or
-        die("Problemas en el select:" . mysqli_error($con));
-        while ($reg = mysqli_fetch_array($registros)) {
-            $idArticulo = $reg['modeloarticulo'];
-            $idEstatus = $reg['statusherramienta'];
-            $modelo = mysqli_query($con, "select * from articulos where idArticulo = $idArticulo") or
-            die("Problemas en el select:" . mysqli_error($con));
-            $reg6 = mysqli_fetch_array($modelo);
+       
 
-            $modelo = mysqli_query($con, "select * from estatus where idEstatus = $idEstatus") or
-            die("Problemas en el select:" . mysqli_error($con));
-            $reg7 = mysqli_fetch_array($modelo);
-
-            $this->Cell(48,7, utf8_decode($reg6['nombreHerramienta']),1, 0 , 'L' );
-            $this->Cell(48,7, utf8_decode($reg['alquiler']),1, 0 , 'L' );
-            $this->Cell(48,7, utf8_decode($reg['cantidad']),1, 0 , 'L' );
-            $this->Cell(48,7, utf8_decode($reg7['estatus']),1, 0 , 'L' );
+            $this->Cell(48,7, utf8_decode("Pala de mezcla"),1, 0 , 'L' );
+            $this->Cell(48,7, utf8_decode("En proceso"),1, 0 , 'L' );
+          
             $this->Ln();//Salto de línea para generar otra fila
-        }
+        
     }
 
     function cabeceraVertical($cabecera)
@@ -76,7 +59,7 @@ class PDF extends FPDF
         foreach($cabecera as $columna)
         {
             //Parámetro con valor 2, hace que la cabecera sea vertical
-            $this->Cell(30,7, utf8_decode($columna),1, 2 , 'L' );
+            $this->Cell(30,7, utf8_decode($columna),1, 5 , 'L' );
         }
     }
  
@@ -103,21 +86,18 @@ $pdf = new PDF();
  
 $pdf->AddPage();
 
-$miCabecera = array('Responsable', 'Fecha Inicio', 'Fecha Fin');
+$miCabecera = array('Responsable',   'Fecha Devolcion');
 
 include('conexion/conexion.php');
-        $idDevolucion = $_GET['id'];
-        $registros = mysqli_query($con, "select * from cabeceranota where idcabeceranota = $idDevolucion") or
-        die("Problemas en el select:" . mysqli_error($con));
-        $reg2 = mysqli_fetch_array($registros);
+    
         
 
-$misDatos = array($reg2['responsableObra'], $reg2['fechaInicio'], $reg2['fechaFin']);
+$misDatos = array("Francisco", "2021-07-13");
  
 $pdf->cabeceraVertical($miCabecera);
 $pdf->datosVerticales($misDatos);
  
-$miCabecera = array('Herramienta ', 'Alquiler', 'Cantidad', 'Estado');
+$miCabecera = array('Herramienta ', 'Estado');
  
  
 $pdf->tablaHorizontal($miCabecera);
