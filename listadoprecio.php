@@ -64,7 +64,7 @@ die("Problemas en el select:" . mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lista de nota</h1>
+            <h1>Lista de precio</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

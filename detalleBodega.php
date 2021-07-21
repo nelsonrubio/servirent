@@ -98,8 +98,8 @@ $reg2 = mysqli_fetch_array($bodega);
                     <th>Codigo articulo</th>
                     <th>Cantidad</th>
                     <th>Precio dia</th>
-                    <th>Precio hora</th>
-                    <th>Precio semana</th>
+                    <th>Valor reposicion</th>
+                    <th>Precio venta</th>
                     <th>Precio mes</th>
                     <th>Pasillo</th>
                     <th>Casillero</th>

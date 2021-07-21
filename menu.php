@@ -190,19 +190,7 @@
                   <p>Listado de pedido</p>
                 </a> 
               </li>
-              <li class="nav-header">Venta</li>
-              <li class="nav-item">
-                <a href="registrarVentas.php" class="nav-link">
-                <i class="nav-icon fas fa-plus"></i>
-                  <p>Registrar venta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listadoVentasChofer.php" class="nav-link">
-                <i class="nav-icon fas fa-list"></i>
-                  <p>Listado venta</p>
-                </a>
-              </li>
+              
             <?php
               }
             ?>

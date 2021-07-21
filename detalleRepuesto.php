@@ -98,9 +98,9 @@ $reg2 = mysqli_fetch_array($bodega);
                     <th>Codigo origen</th>
                     <th>Codigo  interno</th>
                     <th>Proveedor</th>
-                    <th>Stock</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
+                    <th>Stock critico</th>
+                    <th>Cantidad existente</th>
+                    <th>Precio compra</th>
                     <th>Precio venta</th>
                     <th>Pasillo</th>
                     <th>Casillero</th>
