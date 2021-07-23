@@ -113,6 +113,7 @@ die("Problemas en el select: " . mysqli_error($con));
                         <th>Cantidad</th>
                         <th>Tipo de Bodega</th>
                         <th>Fecha de Creacion</th>
+                        <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -121,12 +122,14 @@ die("Problemas en el select: " . mysqli_error($con));
                             while ($reg = mysqli_fetch_array($inventario)) {
                             $tipoBodega = $reg['tipoBodega'];
                             $idBodega = $reg['idBodega'];
+                            
                             $tipo = mysqli_query($con, "select * from tipobodega where idTipo = $tipoBodega") or 
                             die("Problemas en el select: " . mysqli_error($con));
                             $disponibleCantidad = mysqli_query($con, "select SUM(cantidad) AS totalCantidad from articulos  where idBodega = $idBodega") or 
                             die("Problemas en el select: " . mysqli_error($con));
                             $cantidadDisponible = mysqli_fetch_array($disponibleCantidad);
                             $regChofer = mysqli_fetch_array($tipo);
+                            $cantidad = $cantidadDisponible['totalCantidad'];
                             echo'<tr>';
                             echo '<td>' . $reg['idBodega'] . '</td>';
                             echo '<td>' . $reg['nombreBodega'] . '</td>';  
@@ -142,9 +145,16 @@ die("Problemas en el select: " . mysqli_error($con));
                            }
                             echo '<td>'.$regChofer['tipoBodega'].'</td>';
                             echo'<td>'.$reg['fechaCreacion'].'</td>';  
+                            if($reg['hidden'] == 0){
                             ?>
+                              <td><a href="bloquerBodega.php?id=<?php echo $idBodega;?>&cantidad=<?php echo $cantidad?> "class ="btn btn-primary" ><i class='far fa-eye' title='Editar'></i></a></td>
+                            <?php
+                            }else if($reg['hidden'] == 1){
+                            ?>
+                             <td><a href="desbloquearBodega.php?id=<?php echo $idBodega;?>&cantidad=<?php echo $cantidad?> "class ="btn btn-primary" ><i class='far fa-eye-slash' title='Editar'></i></a></td>
                             </tr>
                         <?php   
+                          }
                         }
                         ?>
                     </tr> 
@@ -161,6 +171,7 @@ die("Problemas en el select: " . mysqli_error($con));
                         <th>Cantidad</th>
                         <th>Tipo de Bodega</th>
                         <th>Fecha de Creacion</th>
+                        <th>Opciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -190,9 +201,16 @@ die("Problemas en el select: " . mysqli_error($con));
                            }
                             echo '<td>'.$regChofer['tipoBodega'].'</td>';
                             echo'<td>'.$reg['fechaCreacion'].'</td>';  
+                            if($reg['hidden'] == 0){
                             ?>
+                              <td><a href="bloquerBodega.php?id=<?php echo $idBodega;?>&cantidad=<?php echo $cantidad?> "class ="btn btn-primary" ><i class='far fa-eye' title='Editar'></i></a></td>
+                              <?php
+                              } else if($reg['hidden'] == 1){
+                              ?>
+                               <td><a href="desbloquearBodega.php?id=<?php echo $idBodega;?>&cantidad=<?php echo $cantidad?> "class ="btn btn-primary" ><i class='far fa-eye-slash' title='Editar'></i></a></td>
                             </tr>
-                        <?php   
+                        <?php
+                              }   
                         }
                         ?>
                     </tr> 
