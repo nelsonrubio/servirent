@@ -54,6 +54,12 @@
                   <p>Listado de Bodegas</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="transferirInvetario.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Transferir inventario</p>
+                </a>
+              </li>
 
               <li class="nav-header">ARTICULO</li>
               <li class="nav-item">
