@@ -105,7 +105,7 @@ die("Problemas en el select:" . mysqli_error($con));
                   <select class="form-control tipo" name="principal" id="inicio" style="width: 100%;">
                     <?php
                      while ($reg = mysqli_fetch_array($bodega1)) {
-                      echo '<option value='.$reg['idBodegas'].'>' . $reg['nombreBodega'] . '</option>';
+                      echo '<option value='.$reg['idBodega'].'>' . $reg['nombreBodega'] . '</option>';
                     }
                     ?>
                   </select>
@@ -155,7 +155,7 @@ die("Problemas en el select:" . mysqli_error($con));
                         <select class="form-control tipo" name="secundaria" id="destino" style="width: 100%;">
                           <?php
                           while ($reg2 = mysqli_fetch_array($bodega2)) {
-                            echo '<option value='.$reg2['idBodegas'].'>' . $reg2['nombreBodega'] . '</option>';
+                            echo '<option value='.$reg2['idBodega'].'>' . $reg2['nombreBodega'] . '</option>';
                           }
                           ?>
                         </select>

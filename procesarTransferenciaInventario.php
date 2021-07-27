@@ -11,9 +11,9 @@ include('conexion/conexion.php');
         $emailArr = $_POST['herramienta'];
  
         $totalCilindro = 0;
-
+    echo "select * from articulos where idBodega = $bodegaSecundaria";
         $existeDetalleBodega = mysqli_query($con, "select * from articulos where idBodega = $bodegaSecundaria") or
-                    die("Problemas en el select:" . mysqli_error($con));
+                    die("Problemas en el selectE:" . mysqli_error($con));
                     $existe = mysqli_fetch_array($existeDetalleBodega);
         
         if(count($existe) > 0){
@@ -26,17 +26,25 @@ include('conexion/conexion.php');
                     $cantidad = $nameArr[$i];
                     $articulo = $emailArr[$i];
                      
-                    $articuloBodega = mysqli_query($con, "select * from articulos where idArticulo = $articulo") or
-                    die("Problemas en el select:" . mysqli_error($con));
+                    $articuloBodega = mysqli_query($con, "select * from articulos where idArticulo = $articulo and idBodega = $bodegaPrincipal") or
+                    die("Problemas en el selectA:" . mysqli_error($con));
                     $art = mysqli_fetch_array($articuloBodega);
 
-                    $total = $art['cantidad'] + $cantidad;
+                    $articuloBodegaPrincipal = mysqli_query($con, "select * from articulos where idArticulo = $articulo and idBodega = $bodegaPrincipal") or
+                    die("Problemas en el selectP:" . mysqli_error($con));
+                    $artPrin = mysqli_fetch_array($articuloBodegaPrincipal);
 
-                    mysqli_query($con, "update detallebodega set cantidad= $total where idBodega = $bodegaSecundaria and idArticulo = $articulo") or
-                    die("Problemas en el selectaaaaaaaaaaaaaa:" . mysqli_error($con));
+                    $total = $art['cantidad'] + $cantidad;
+                    $total2 = $artPrin['cantidad'] - $cantidad;
+
+                    mysqli_query($con, "update articulos set cantidad= $total where idBodega = $bodegaSecundaria and idArticulo = $articulo") or
+                    die("Problemas en el selectsecundaaria:" . mysqli_error($con));
+
+                    mysqli_query($con, "update articulos set cantidad= $total2 where idBodega = $bodegaPrincipal and idArticulo = $articulo") or
+                    die("Problemas en el selectPrincipal:" . mysqli_error($con));
 
                   
-                    echo '<script> alert("Registro completado, por favor acepte para continuar..."); window.location = "crearBodega.php";</script>';
+                    echo '<script> alert("Transferencia  completada, por favor acepte para continuar..."); window.location = "transferirInvetario.php";</script>';
                     //database insert query goes here
                 }
             }
