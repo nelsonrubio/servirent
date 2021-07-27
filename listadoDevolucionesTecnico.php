@@ -93,6 +93,7 @@ die("Problemas en el select:" . mysqli_error($con));
                     <th>Nro. devolucion</th>
                     <th>Nro. nota</th>
                     <th>Articulo</th>
+                    <th>Codigo interno</th>
                     <th>Descriocion</th>
                     <th>Fecha Devulcion</th>
                     <th>Estatus</th>
@@ -114,15 +115,35 @@ die("Problemas en el select:" . mysqli_error($con));
                             $estado = mysqli_query($con, "select * from estatusdevolucion where idEstatus = $idStatus") or
                             die("Problemas en el select:" . mysqli_error($con));
                             $reg3 = mysqli_fetch_array($estado);
-                                echo'<tr>';
+                            if($reg3['idEstatus'] == 1){
+                                echo'<tr style="background-color: #ffa4a4;">';
                                 echo '<td>' . $reg['idDevolucion'] . '</td>';
                                 echo '<td>' . $reg['idcabeceranota'] . '</td>';
                                 echo '<td>' . $reg2['nombreHerramienta'] . '</td>';
+                                echo '<td>' . $reg2['CodigoEquipo'] . '</td>';
                                 echo '<td>' . $reg['nota'] . '</td>';
                                 echo '<td>' . $reg['fechaDevolucion'] . '</td>';
                                 echo '<td>' . $reg3['estatus'] . '</td>';
                           
-                                
+                              }else if($reg3['idEstatus'] == 2){
+                                echo'<tr style="background-color: #ffff9c;">';
+                                echo '<td>' . $reg['idDevolucion'] . '</td>';
+                                echo '<td>' . $reg['idcabeceranota'] . '</td>';
+                                echo '<td>' . $reg2['nombreHerramienta'] . '</td>';
+                                echo '<td>' . $reg2['CodigoEquipo'] . '</td>';
+                                echo '<td>' . $reg['nota'] . '</td>';
+                                echo '<td>' . $reg['fechaDevolucion'] . '</td>';
+                                echo '<td>' . $reg3['estatus'] . '</td>';
+                              }else if($reg3['idEstatus'] == 3){
+                                echo'<tr style="background-color: #96fd96;">';
+                                echo '<td>' . $reg['idDevolucion'] . '</td>';
+                                echo '<td>' . $reg['idcabeceranota'] . '</td>';
+                                echo '<td>' . $reg2['nombreHerramienta'] . '</td>';
+                                echo '<td>' . $reg2['CodigoEquipo'] . '</td>';
+                                echo '<td>' . $reg['nota'] . '</td>';
+                                echo '<td>' . $reg['fechaDevolucion'] . '</td>';
+                                echo '<td>' . $reg3['estatus'] . '</td>';
+                              }
                                  
         
                     ?>
