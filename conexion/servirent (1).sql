@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2021 a las 20:33:11
+-- Tiempo de generación: 27-07-2021 a las 20:36:10
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -54,7 +54,7 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`idArticulo`, `nombreHerramienta`, `marca`, `modelo`, `nroSerie`, `PrecioDia`, `PrecioHora`, `PrecioSemana`, `PrecioMes`, `fechaCompra`, `NroFactura`, `Proveedor`, `CodigoEquipo`, `nota`, `directorioImagen`, `idBodega`, `cantidad`, `pasillo`, `casillero`) VALUES
-(30, 'Pala de mezcla', 'stanly', '3Hmkp-L', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '123456', 'Herramienta nueva', '', 1, 75, 'Pasillo 12-A', '34-B'),
+(30, 'Pala de mezcla', 'stanly', '3Hmkp-L', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '123456', 'Herramienta nueva', '', 1, 60, 'Pasillo 12-A', '34-B'),
 (31, 'Podadora', 'stanly', '3498R', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '987654', 'Herramienta nueva', '', 1, 144, 'Pasillo-B', '36-A'),
 (32, 'Martillo', 'stanly', '23457BÑ', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '000000', 'Herramienta nueva', '', 1, 36, 'Pasillo-C', '40-A'),
 (33, 'tijeras', 'stanly', '782736DKCI', 1212122, '20', '30', '50', '100', '0000-00-00', 125454, 'nelson', '333333', 'Herramienta nueva', '', 3, 2, 'Pasillo-C', '60'),
@@ -74,21 +74,25 @@ CREATE TABLE `bodegas` (
   `idBodega` int(11) NOT NULL,
   `nombreBodega` varchar(500) NOT NULL,
   `fechaCreacion` date NOT NULL,
-  `tipoBodega` int(11) NOT NULL
+  `tipoBodega` int(11) NOT NULL,
+  `hidden` int(11) NOT NULL,
+  `user` varchar(500) NOT NULL,
+  `fecha` varchar(500) NOT NULL,
+  `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `bodegas`
 --
 
-INSERT INTO `bodegas` (`idBodega`, `nombreBodega`, `fechaCreacion`, `tipoBodega`) VALUES
-(1, 'Bodega de prueba ', '2021-04-14', 1),
-(2, 'Bodega de prueba 1', '2021-04-14', 1),
-(3, 'Bodega de prueba 2', '2021-04-14', 1),
-(4, 'Bodega de prueba 3', '2021-04-14', 2),
-(5, 'Bodega respuesto', '2021-05-04', 2),
-(6, 'Obra civil metropolitana', '2021-05-07', 1),
-(7, 'Bodega de partillos', '2021-05-07', 1);
+INSERT INTO `bodegas` (`idBodega`, `nombreBodega`, `fechaCreacion`, `tipoBodega`, `hidden`, `user`, `fecha`, `descripcion`) VALUES
+(1, 'Bodega de prueba ', '2021-04-14', 1, 0, '', '', ''),
+(2, 'Bodega de prueba 1', '2021-04-14', 1, 0, '', '', ''),
+(3, 'Bodega de prueba 2', '2021-04-14', 1, 0, '', '', ''),
+(4, 'Bodega de prueba 3', '2021-04-14', 2, 0, '', '', ''),
+(5, 'Bodega respuesto', '2021-05-04', 2, 0, '', '', ''),
+(6, 'Obra civil metropolitana', '2021-05-07', 1, 0, ' nelsonrubio20', '2021-07-27', ''),
+(7, 'Bodega de partillos', '2021-05-07', 1, 1, ' nelsonrubio20', '2021-07-27', '');
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,8 @@ CREATE TABLE `cabeceranota` (
 INSERT INTO `cabeceranota` (`idcabeceranota`, `nombreAlquilino`, `rut`, `direccion`, `telefono`, `fechaInicio`, `fechaFin`, `nombreObra`, `responsableObra`, `estatusNota`, `email`, `idChofer`, `idConstructora`, `tipoOperacion`, `idBodega`) VALUES
 (9, 'Nelson Rubio', '123456789o', 'Cuatricentenario', '04246142358', '2021-05-07', '2021-05-31', 1, 'Francisco', 1, 'nelsonrubio20@gmail.com', 36, 0, 0, 1),
 (11, 'Francisco', '123456789K', 'Santiago de chile ', '123456789', '0000-00-00', '0000-00-00', 5, '', 1, 'francisco@gmail.com', 36, 1, 1, 1),
-(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 1);
+(12, 'Nelson Rubio', '20944666', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 1, 1),
+(15, '343434', '343434', 'Cuatricentenario', '04246142358', '0000-00-00', '0000-00-00', 5, '', 1, 'nelsonrubio20@gmail.com', 36, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +175,8 @@ INSERT INTO `detallenota` (`iddetallenota`, `idcabeceranota`, `modeloarticulo`, 
 (9, 9, '34', 'mes', 1, 1, 0),
 (11, 11, '30', 'hora', 30, 1, 1),
 (12, 12, '34', 'dia', 30, 1, 1),
-(13, 13, '30', 'mes', 30, 1, 1);
+(13, 13, '30', 'mes', 30, 1, 1),
+(15, 15, '30', 'dia', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -197,7 +203,7 @@ CREATE TABLE `devolucion` (
 INSERT INTO `devolucion` (`idDevolucion`, `idcabeceranota`, `idarticulo`, `nota`, `fechaDevolucion`, `fechaFinalizar`, `iduser`, `statusDevolucion`, `notaTecnico`) VALUES
 (1, 13, 30, 'Prueba', '2021-07-07', NULL, NULL, 1, NULL),
 (4, 14, 30, ' Se devuelve porque no prende', '2021-07-07', NULL, NULL, 1, NULL),
-(6, 11, 30, ' Se rompio el mango', '2021-07-07', NULL, NULL, 1, NULL),
+(6, 11, 30, ' Se rompio el mango', '2021-07-07', NULL, NULL, 3, NULL),
 (7, 13, 30, ' prueba', '2021-07-13', NULL, 42, 2, 'En revision de la gerramienta'),
 (8, 12, 34, ' prueba', '2021-07-13', NULL, NULL, 1, NULL);
 
@@ -493,7 +499,7 @@ ALTER TABLE `bodegas`
 -- AUTO_INCREMENT de la tabla `cabeceranota`
 --
 ALTER TABLE `cabeceranota`
-  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idcabeceranota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `constructora`
@@ -505,7 +511,7 @@ ALTER TABLE `constructora`
 -- AUTO_INCREMENT de la tabla `detallenota`
 --
 ALTER TABLE `detallenota`
-  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `iddetallenota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
