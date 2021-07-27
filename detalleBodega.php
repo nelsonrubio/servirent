@@ -103,12 +103,14 @@ $reg2 = mysqli_fetch_array($bodega);
                     <th>Precio mes</th>
                     <th>Pasillo</th>
                     <th>Casillero</th>
+                    <th>Opcion</th>
                   </tr>
                   </thead>
                   <tbody>
  
                     <?php
                         while ($reg = mysqli_fetch_array($detalle)) {
+                          $idArticulo = $reg['idArticulo'];
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreHerramienta'] . '</td>';
                                 
@@ -122,7 +124,7 @@ $reg2 = mysqli_fetch_array($bodega);
                                 echo'<td>'.$reg['casillero'].'</td>'; 
                         
                     ?>
-                    
+                    <td><a href="detalleArticulo.php?id=<?php echo $idArticulo;?> "class ="btn btn-primary" ><i class='far fa-eye' title='Editar'></i></a></td>
                     <?php
                     }
                     ?>
