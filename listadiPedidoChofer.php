@@ -4,7 +4,7 @@ session_start();
 $user=$_SESSION['nombreUsuario'];
 $userId = $_SESSION['idUsuario'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-$pedidos = mysqli_query($con, "select * from cabeceranota where  idChofer = $userId and tipoOperacion = 2 ORDER by idcabeceranota DESC") or
+$pedidos = mysqli_query($con, "select * from cabeceranota where  idChofer = $userId  ORDER by idcabeceranota DESC") or
 die("Problemas en el select:" . mysqli_error($con));
 ?>
 <!DOCTYPE html>
@@ -93,6 +93,7 @@ die("Problemas en el select:" . mysqli_error($con));
                   <tr>
                     <th>Nombre</th>
                     <th>Rut</th>
+                    <th>Tipo de pedido</th>
                     <th>Direccion</th>
                     <th>Telefono</th>
                     <th>Estatus</th>
@@ -115,6 +116,11 @@ die("Problemas en el select:" . mysqli_error($con));
                             echo'<tr>';
                                 echo '<td>' . $reg['nombreAlquilino'] . '</td>';
                                 echo '<td>' . $reg['rut'] . '</td>';  
+                                if($reg['tipoOperacion'] == 1){
+                                  echo '<td> Venta</td>';  
+                                }else{
+                                  echo '<td> Alquiler</td>';  
+                                }
                                 echo '<td>'.$reg['direccion'].'</td>';
                                 echo '<td>'.$reg['telefono'].'</td>';
                                 echo '<td>'.$reg2['estatus'].'</td>';
